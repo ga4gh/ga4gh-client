@@ -74,7 +74,7 @@ def createArgumentParser(description):
 def addVersionArgument(parser):
     # TODO argparse strips newlines from version output
     versionString = (
-        "GA4GH Server Version {}\n"
+        "GA4GH Client Version {}\n"
         "(Protocol Version {})".format(
             ga4gh.__version__, protocol.version))
     parser.add_argument(
