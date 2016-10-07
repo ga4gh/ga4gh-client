@@ -14,15 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 from ga4gh import rna_quantification_pb2 as ga4gh_dot_rna__quantification__pb2
+from elgoog.api import annotations_pb2 as elgoog_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ga4gh/rna_quantification_service.proto',
   package='ga4gh',
   syntax='proto3',
-  serialized_pb=_b('\n&ga4gh/rna_quantification_service.proto\x12\x05ga4gh\x1a\x1ega4gh/rna_quantification.proto\"_\n\"SearchRnaQuantificationSetsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"|\n#SearchRnaQuantificationSetsResponse\x12<\n\x17rna_quantification_sets\x18\x01 \x03(\x0b\x32\x1b.ga4gh.RnaQuantificationSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"C\n\x1eGetRnaQuantificationSetRequest\x12!\n\x19rna_quantification_set_id\x18\x01 \x01(\t\"k\n\x1fSearchRnaQuantificationsRequest\x12!\n\x19rna_quantification_set_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"r\n SearchRnaQuantificationsResponse\x12\x35\n\x13rna_quantifications\x18\x01 \x03(\x0b\x32\x18.ga4gh.RnaQuantification\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"<\n\x1bGetRnaQuantificationRequest\x12\x1d\n\x15rna_quantification_id\x18\x01 \x01(\t\"\x8d\x01\n\x1dSearchExpressionLevelsRequest\x12\x1d\n\x15rna_quantification_id\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_ids\x18\x02 \x03(\t\x12\x11\n\tthreshold\x18\x03 \x01(\x02\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"l\n\x1eSearchExpressionLevelsResponse\x12\x31\n\x11\x65xpression_levels\x18\x01 \x03(\x0b\x32\x16.ga4gh.ExpressionLevel\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"8\n\x19GetExpressionLevelRequest\x12\x1b\n\x13\x65xpression_level_id\x18\x01 \x01(\t2\xe9\x04\n\x18RnaQuantificationService\x12t\n\x1bSearchRnaQuantificationSets\x12).ga4gh.SearchRnaQuantificationSetsRequest\x1a*.ga4gh.SearchRnaQuantificationSetsResponse\x12]\n\x17GetRnaQuantificationSet\x12%.ga4gh.GetRnaQuantificationSetRequest\x1a\x1b.ga4gh.RnaQuantificationSet\x12k\n\x18SearchRnaQuantifications\x12&.ga4gh.SearchRnaQuantificationsRequest\x1a\'.ga4gh.SearchRnaQuantificationsResponse\x12T\n\x14GetRnaQuantification\x12\".ga4gh.GetRnaQuantificationRequest\x1a\x18.ga4gh.RnaQuantification\x12\x65\n\x16SearchExpressionLevels\x12$.ga4gh.SearchExpressionLevelsRequest\x1a%.ga4gh.SearchExpressionLevelsResponse\x12N\n\x12GetExpressionLevel\x12 .ga4gh.GetExpressionLevelRequest\x1a\x16.ga4gh.ExpressionLevelb\x06proto3')
+  serialized_pb=_b('\n&ga4gh/rna_quantification_service.proto\x12\x05ga4gh\x1a\x1ega4gh/rna_quantification.proto\x1a\x1c\x65lgoog/api/annotations.proto\"_\n\"SearchRnaQuantificationSetsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"|\n#SearchRnaQuantificationSetsResponse\x12<\n\x17rna_quantification_sets\x18\x01 \x03(\x0b\x32\x1b.ga4gh.RnaQuantificationSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"C\n\x1eGetRnaQuantificationSetRequest\x12!\n\x19rna_quantification_set_id\x18\x01 \x01(\t\"k\n\x1fSearchRnaQuantificationsRequest\x12!\n\x19rna_quantification_set_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"r\n SearchRnaQuantificationsResponse\x12\x35\n\x13rna_quantifications\x18\x01 \x03(\x0b\x32\x18.ga4gh.RnaQuantification\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"<\n\x1bGetRnaQuantificationRequest\x12\x1d\n\x15rna_quantification_id\x18\x01 \x01(\t\"\x8d\x01\n\x1dSearchExpressionLevelsRequest\x12\x1d\n\x15rna_quantification_id\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_ids\x18\x02 \x03(\t\x12\x11\n\tthreshold\x18\x03 \x01(\x02\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"l\n\x1eSearchExpressionLevelsResponse\x12\x31\n\x11\x65xpression_levels\x18\x01 \x03(\x0b\x32\x16.ga4gh.ExpressionLevel\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"8\n\x19GetExpressionLevelRequest\x12\x1b\n\x13\x65xpression_level_id\x18\x01 \x01(\t2\xbd\x07\n\x18RnaQuantificationService\x12\xa7\x01\n\x1bSearchRnaQuantificationSets\x12).ga4gh.SearchRnaQuantificationSetsRequest\x1a*.ga4gh.SearchRnaQuantificationSetsResponse\"1\x82\xd3\xe4\x93\x02+\"&/v0.6.0a8/rnaquantificationsets/search:\x01*\x12\xa2\x01\n\x17GetRnaQuantificationSet\x12%.ga4gh.GetRnaQuantificationSetRequest\x1a\x1b.ga4gh.RnaQuantificationSet\"C\x82\xd3\xe4\x93\x02=\x12;/v0.6.0a8/rnaquantificationsets/{rna_quantification_set_id}\x12\x9b\x01\n\x18SearchRnaQuantifications\x12&.ga4gh.SearchRnaQuantificationsRequest\x1a\'.ga4gh.SearchRnaQuantificationsResponse\".\x82\xd3\xe4\x93\x02(\"#/v0.6.0a8/rnaquantifications/search:\x01*\x12\x92\x01\n\x14GetRnaQuantification\x12\".ga4gh.GetRnaQuantificationRequest\x1a\x18.ga4gh.RnaQuantification\"<\x82\xd3\xe4\x93\x02\x36\x12\x34/v0.6.0a8/rnaquantifications/{rna_quantification_id}\x12\x93\x01\n\x16SearchExpressionLevels\x12$.ga4gh.SearchExpressionLevelsRequest\x1a%.ga4gh.SearchExpressionLevelsResponse\",\x82\xd3\xe4\x93\x02&\"!/v0.6.0a8/expressionlevels/search:\x01*\x12\x88\x01\n\x12GetExpressionLevel\x12 .ga4gh.GetExpressionLevelRequest\x1a\x16.ga4gh.ExpressionLevel\"8\x82\xd3\xe4\x93\x02\x32\x12\x30/v0.6.0a8/expressionlevels/{expression_level_id}b\x06proto3')
   ,
-  dependencies=[ga4gh_dot_rna__quantification__pb2.DESCRIPTOR,])
+  dependencies=[ga4gh_dot_rna__quantification__pb2.DESCRIPTOR,elgoog_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -68,8 +69,8 @@ _SEARCHRNAQUANTIFICATIONSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=81,
-  serialized_end=176,
+  serialized_start=111,
+  serialized_end=206,
 )
 
 
@@ -106,8 +107,8 @@ _SEARCHRNAQUANTIFICATIONSETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=178,
-  serialized_end=302,
+  serialized_start=208,
+  serialized_end=332,
 )
 
 
@@ -137,8 +138,8 @@ _GETRNAQUANTIFICATIONSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=304,
-  serialized_end=371,
+  serialized_start=334,
+  serialized_end=401,
 )
 
 
@@ -182,8 +183,8 @@ _SEARCHRNAQUANTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=373,
-  serialized_end=480,
+  serialized_start=403,
+  serialized_end=510,
 )
 
 
@@ -220,8 +221,8 @@ _SEARCHRNAQUANTIFICATIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=482,
-  serialized_end=596,
+  serialized_start=512,
+  serialized_end=626,
 )
 
 
@@ -251,8 +252,8 @@ _GETRNAQUANTIFICATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=598,
-  serialized_end=658,
+  serialized_start=628,
+  serialized_end=688,
 )
 
 
@@ -310,8 +311,8 @@ _SEARCHEXPRESSIONLEVELSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=661,
-  serialized_end=802,
+  serialized_start=691,
+  serialized_end=832,
 )
 
 
@@ -348,8 +349,8 @@ _SEARCHEXPRESSIONLEVELSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=804,
-  serialized_end=912,
+  serialized_start=834,
+  serialized_end=942,
 )
 
 
@@ -379,8 +380,8 @@ _GETEXPRESSIONLEVELREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=914,
-  serialized_end=970,
+  serialized_start=944,
+  serialized_end=1000,
 )
 
 _SEARCHRNAQUANTIFICATIONSETSRESPONSE.fields_by_name['rna_quantification_sets'].message_type = ga4gh_dot_rna__quantification__pb2._RNAQUANTIFICATIONSET

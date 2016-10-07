@@ -14,15 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 from ga4gh import references_pb2 as ga4gh_dot_references__pb2
+from elgoog.api import annotations_pb2 as elgoog_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ga4gh/reference_service.proto',
   package='ga4gh',
   syntax='proto3',
-  serialized_pb=_b('\n\x1dga4gh/reference_service.proto\x12\x05ga4gh\x1a\x16ga4gh/references.proto\"\x80\x01\n\x1aSearchReferenceSetsRequest\x12\x13\n\x0bmd5checksum\x18\x01 \x01(\t\x12\x11\n\taccession\x18\x02 \x01(\t\x12\x13\n\x0b\x61ssembly_id\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"c\n\x1bSearchReferenceSetsResponse\x12+\n\x0ereference_sets\x18\x01 \x03(\x0b\x32\x13.ga4gh.ReferenceSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"2\n\x16GetReferenceSetRequest\x12\x18\n\x10reference_set_id\x18\x01 \x01(\t\"\x82\x01\n\x17SearchReferencesRequest\x12\x18\n\x10reference_set_id\x18\x01 \x01(\t\x12\x13\n\x0bmd5checksum\x18\x02 \x01(\t\x12\x11\n\taccession\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"Y\n\x18SearchReferencesResponse\x12$\n\nreferences\x18\x01 \x03(\x0b\x32\x10.ga4gh.Reference\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"+\n\x13GetReferenceRequest\x12\x14\n\x0creference_id\x18\x01 \x01(\t\"a\n\x19ListReferenceBasesRequest\x12\x14\n\x0creference_id\x18\x01 \x01(\t\x12\r\n\x05start\x18\x02 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x03 \x01(\x03\x12\x12\n\npage_token\x18\x04 \x01(\t\"W\n\x1aListReferenceBasesResponse\x12\x0e\n\x06offset\x18\x01 \x01(\x03\x12\x10\n\x08sequence\x18\x02 \x01(\t\x12\x17\n\x0fnext_page_token\x18\x03 \x01(\t2\xa5\x03\n\x10ReferenceService\x12\\\n\x13SearchReferenceSets\x12!.ga4gh.SearchReferenceSetsRequest\x1a\".ga4gh.SearchReferenceSetsResponse\x12\x45\n\x0fGetReferenceSet\x12\x1d.ga4gh.GetReferenceSetRequest\x1a\x13.ga4gh.ReferenceSet\x12S\n\x10SearchReferences\x12\x1e.ga4gh.SearchReferencesRequest\x1a\x1f.ga4gh.SearchReferencesResponse\x12<\n\x0cGetReference\x12\x1a.ga4gh.GetReferenceRequest\x1a\x10.ga4gh.Reference\x12Y\n\x12ListReferenceBases\x12 .ga4gh.ListReferenceBasesRequest\x1a!.ga4gh.ListReferenceBasesResponseb\x06proto3')
+  serialized_pb=_b('\n\x1dga4gh/reference_service.proto\x12\x05ga4gh\x1a\x16ga4gh/references.proto\x1a\x1c\x65lgoog/api/annotations.proto\"\x80\x01\n\x1aSearchReferenceSetsRequest\x12\x13\n\x0bmd5checksum\x18\x01 \x01(\t\x12\x11\n\taccession\x18\x02 \x01(\t\x12\x13\n\x0b\x61ssembly_id\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"c\n\x1bSearchReferenceSetsResponse\x12+\n\x0ereference_sets\x18\x01 \x03(\x0b\x32\x13.ga4gh.ReferenceSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"2\n\x16GetReferenceSetRequest\x12\x18\n\x10reference_set_id\x18\x01 \x01(\t\"\x82\x01\n\x17SearchReferencesRequest\x12\x18\n\x10reference_set_id\x18\x01 \x01(\t\x12\x13\n\x0bmd5checksum\x18\x02 \x01(\t\x12\x11\n\taccession\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"Y\n\x18SearchReferencesResponse\x12$\n\nreferences\x18\x01 \x03(\x0b\x32\x10.ga4gh.Reference\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"+\n\x13GetReferenceRequest\x12\x14\n\x0creference_id\x18\x01 \x01(\t\"a\n\x19ListReferenceBasesRequest\x12\x14\n\x0creference_id\x18\x01 \x01(\t\x12\r\n\x05start\x18\x02 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x03 \x01(\x03\x12\x12\n\npage_token\x18\x04 \x01(\t\"W\n\x1aListReferenceBasesResponse\x12\x0e\n\x06offset\x18\x01 \x01(\x03\x12\x10\n\x08sequence\x18\x02 \x01(\t\x12\x17\n\x0fnext_page_token\x18\x03 \x01(\t2\x91\x05\n\x10ReferenceService\x12\x87\x01\n\x13SearchReferenceSets\x12!.ga4gh.SearchReferenceSetsRequest\x1a\".ga4gh.SearchReferenceSetsResponse\")\x82\xd3\xe4\x93\x02#\"\x1e/v0.6.0a8/referencesets/search:\x01*\x12y\n\x0fGetReferenceSet\x12\x1d.ga4gh.GetReferenceSetRequest\x1a\x13.ga4gh.ReferenceSet\"2\x82\xd3\xe4\x93\x02,\x12*/v0.6.0a8/referencesets/{reference_set_id}\x12{\n\x10SearchReferences\x12\x1e.ga4gh.SearchReferencesRequest\x1a\x1f.ga4gh.SearchReferencesResponse\"&\x82\xd3\xe4\x93\x02 \"\x1b/v0.6.0a8/references/search:\x01*\x12i\n\x0cGetReference\x12\x1a.ga4gh.GetReferenceRequest\x1a\x10.ga4gh.Reference\"+\x82\xd3\xe4\x93\x02%\x12#/v0.6.0a8/references/{reference_id}\x12\x8f\x01\n\x12ListReferenceBases\x12 .ga4gh.ListReferenceBasesRequest\x1a!.ga4gh.ListReferenceBasesResponse\"4\x82\xd3\xe4\x93\x02.\")/v0.6.0a8/references/{reference_id}/bases:\x01*b\x06proto3')
   ,
-  dependencies=[ga4gh_dot_references__pb2.DESCRIPTOR,])
+  dependencies=[ga4gh_dot_references__pb2.DESCRIPTOR,elgoog_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -82,8 +83,8 @@ _SEARCHREFERENCESETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=65,
-  serialized_end=193,
+  serialized_start=95,
+  serialized_end=223,
 )
 
 
@@ -120,8 +121,8 @@ _SEARCHREFERENCESETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=195,
-  serialized_end=294,
+  serialized_start=225,
+  serialized_end=324,
 )
 
 
@@ -151,8 +152,8 @@ _GETREFERENCESETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=296,
-  serialized_end=346,
+  serialized_start=326,
+  serialized_end=376,
 )
 
 
@@ -210,8 +211,8 @@ _SEARCHREFERENCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=349,
-  serialized_end=479,
+  serialized_start=379,
+  serialized_end=509,
 )
 
 
@@ -248,8 +249,8 @@ _SEARCHREFERENCESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=481,
-  serialized_end=570,
+  serialized_start=511,
+  serialized_end=600,
 )
 
 
@@ -279,8 +280,8 @@ _GETREFERENCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=572,
-  serialized_end=615,
+  serialized_start=602,
+  serialized_end=645,
 )
 
 
@@ -331,8 +332,8 @@ _LISTREFERENCEBASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=617,
-  serialized_end=714,
+  serialized_start=647,
+  serialized_end=744,
 )
 
 
@@ -376,8 +377,8 @@ _LISTREFERENCEBASESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=716,
-  serialized_end=803,
+  serialized_start=746,
+  serialized_end=833,
 )
 
 _SEARCHREFERENCESETSRESPONSE.fields_by_name['reference_sets'].message_type = ga4gh_dot_references__pb2._REFERENCESET

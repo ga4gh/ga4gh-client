@@ -14,15 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 from ga4gh import metadata_pb2 as ga4gh_dot_metadata__pb2
+from elgoog.api import annotations_pb2 as elgoog_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ga4gh/metadata_service.proto',
   package='ga4gh',
   syntax='proto3',
-  serialized_pb=_b('\n\x1cga4gh/metadata_service.proto\x12\x05ga4gh\x1a\x14ga4gh/metadata.proto\">\n\x15SearchDatasetsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"S\n\x16SearchDatasetsResponse\x12 \n\x08\x64\x61tasets\x18\x01 \x03(\x0b\x32\x0e.ga4gh.Dataset\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\'\n\x11GetDatasetRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t2\x98\x01\n\x0fMetadataService\x12M\n\x0eSearchDatasets\x12\x1c.ga4gh.SearchDatasetsRequest\x1a\x1d.ga4gh.SearchDatasetsResponse\x12\x36\n\nGetDataset\x12\x18.ga4gh.GetDatasetRequest\x1a\x0e.ga4gh.Datasetb\x06proto3')
+  serialized_pb=_b('\n\x1cga4gh/metadata_service.proto\x12\x05ga4gh\x1a\x14ga4gh/metadata.proto\x1a\x1c\x65lgoog/api/annotations.proto\">\n\x15SearchDatasetsRequest\x12\x11\n\tpage_size\x18\x01 \x01(\x05\x12\x12\n\npage_token\x18\x02 \x01(\t\"S\n\x16SearchDatasetsResponse\x12 \n\x08\x64\x61tasets\x18\x01 \x03(\x0b\x32\x0e.ga4gh.Dataset\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\'\n\x11GetDatasetRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t2\xe7\x01\n\x0fMetadataService\x12s\n\x0eSearchDatasets\x12\x1c.ga4gh.SearchDatasetsRequest\x1a\x1d.ga4gh.SearchDatasetsResponse\"$\x82\xd3\xe4\x93\x02\x1e\"\x19/v0.6.0a8/datasets/search:\x01*\x12_\n\nGetDataset\x12\x18.ga4gh.GetDatasetRequest\x1a\x0e.ga4gh.Dataset\"\'\x82\xd3\xe4\x93\x02!\x12\x1f/v0.6.0a8/datasets/{dataset_id}b\x06proto3')
   ,
-  dependencies=[ga4gh_dot_metadata__pb2.DESCRIPTOR,])
+  dependencies=[ga4gh_dot_metadata__pb2.DESCRIPTOR,elgoog_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -61,8 +62,8 @@ _SEARCHDATASETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=61,
-  serialized_end=123,
+  serialized_start=91,
+  serialized_end=153,
 )
 
 
@@ -99,8 +100,8 @@ _SEARCHDATASETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=125,
-  serialized_end=208,
+  serialized_start=155,
+  serialized_end=238,
 )
 
 
@@ -130,8 +131,8 @@ _GETDATASETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=210,
-  serialized_end=249,
+  serialized_start=240,
+  serialized_end=279,
 )
 
 _SEARCHDATASETSRESPONSE.fields_by_name['datasets'].message_type = ga4gh_dot_metadata__pb2._DATASET

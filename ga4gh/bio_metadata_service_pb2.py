@@ -14,15 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 from ga4gh import bio_metadata_pb2 as ga4gh_dot_bio__metadata__pb2
+from elgoog.api import annotations_pb2 as elgoog_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ga4gh/bio_metadata_service.proto',
   package='ga4gh',
   syntax='proto3',
-  serialized_pb=_b('\n ga4gh/bio_metadata_service.proto\x12\x05ga4gh\x1a\x18ga4gh/bio_metadata.proto\"c\n\x18SearchIndividualsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x03 \x01(\x05\x12\x12\n\npage_token\x18\x04 \x01(\t\"-\n\x14GetIndividualRequest\x12\x15\n\rindividual_id\x18\x01 \x01(\t\",\n\x13GetBioSampleRequest\x12\x15\n\rbio_sample_id\x18\x01 \x01(\t\"\\\n\x19SearchIndividualsResponse\x12&\n\x0bindividuals\x18\x01 \x03(\x0b\x32\x11.ga4gh.Individual\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"y\n\x17SearchBioSamplesRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x15\n\rindividual_id\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"Y\n\x18SearchBioSamplesResponse\x12$\n\nbiosamples\x18\x01 \x03(\x0b\x32\x10.ga4gh.BioSample\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\xc0\x02\n\x12\x42ioMetadataService\x12V\n\x11SearchIndividuals\x12\x1f.ga4gh.SearchIndividualsRequest\x1a .ga4gh.SearchIndividualsResponse\x12S\n\x10SearchBioSamples\x12\x1e.ga4gh.SearchBioSamplesRequest\x1a\x1f.ga4gh.SearchBioSamplesResponse\x12?\n\rGetIndividual\x12\x1b.ga4gh.GetIndividualRequest\x1a\x11.ga4gh.Individual\x12<\n\x0cGetBioSample\x12\x1a.ga4gh.GetBioSampleRequest\x1a\x10.ga4gh.BioSampleb\x06proto3')
+  serialized_pb=_b('\n ga4gh/bio_metadata_service.proto\x12\x05ga4gh\x1a\x18ga4gh/bio_metadata.proto\x1a\x1c\x65lgoog/api/annotations.proto\"c\n\x18SearchIndividualsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x03 \x01(\x05\x12\x12\n\npage_token\x18\x04 \x01(\t\"-\n\x14GetIndividualRequest\x12\x15\n\rindividual_id\x18\x01 \x01(\t\",\n\x13GetBioSampleRequest\x12\x15\n\rbio_sample_id\x18\x01 \x01(\t\"\\\n\x19SearchIndividualsResponse\x12&\n\x0bindividuals\x18\x01 \x03(\x0b\x32\x11.ga4gh.Individual\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"y\n\x17SearchBioSamplesRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x15\n\rindividual_id\x18\x03 \x01(\t\x12\x11\n\tpage_size\x18\x04 \x01(\x05\x12\x12\n\npage_token\x18\x05 \x01(\t\"Y\n\x18SearchBioSamplesResponse\x12$\n\nbiosamples\x18\x01 \x03(\x0b\x32\x10.ga4gh.BioSample\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\xee\x03\n\x12\x42ioMetadataService\x12\x7f\n\x11SearchIndividuals\x12\x1f.ga4gh.SearchIndividualsRequest\x1a .ga4gh.SearchIndividualsResponse\"\'\x82\xd3\xe4\x93\x02!\"\x1c/v0.6.0a8/individuals/search:\x01*\x12{\n\x10SearchBioSamples\x12\x1e.ga4gh.SearchBioSamplesRequest\x1a\x1f.ga4gh.SearchBioSamplesResponse\"&\x82\xd3\xe4\x93\x02 \"\x1b/v0.6.0a8/biosamples/search:\x01*\x12n\n\rGetIndividual\x12\x1b.ga4gh.GetIndividualRequest\x1a\x11.ga4gh.Individual\"-\x82\xd3\xe4\x93\x02\'\x12%/v0.6.0a8/individuals/{individual_id}\x12j\n\x0cGetBioSample\x12\x1a.ga4gh.GetBioSampleRequest\x1a\x10.ga4gh.BioSample\",\x82\xd3\xe4\x93\x02&\x12$/v0.6.0a8/biosamples/{bio_sample_id}b\x06proto3')
   ,
-  dependencies=[ga4gh_dot_bio__metadata__pb2.DESCRIPTOR,])
+  dependencies=[ga4gh_dot_bio__metadata__pb2.DESCRIPTOR,elgoog_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -75,8 +76,8 @@ _SEARCHINDIVIDUALSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=69,
-  serialized_end=168,
+  serialized_start=99,
+  serialized_end=198,
 )
 
 
@@ -106,8 +107,8 @@ _GETINDIVIDUALREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=170,
-  serialized_end=215,
+  serialized_start=200,
+  serialized_end=245,
 )
 
 
@@ -137,8 +138,8 @@ _GETBIOSAMPLEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=217,
-  serialized_end=261,
+  serialized_start=247,
+  serialized_end=291,
 )
 
 
@@ -175,8 +176,8 @@ _SEARCHINDIVIDUALSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=263,
-  serialized_end=355,
+  serialized_start=293,
+  serialized_end=385,
 )
 
 
@@ -234,8 +235,8 @@ _SEARCHBIOSAMPLESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=357,
-  serialized_end=478,
+  serialized_start=387,
+  serialized_end=508,
 )
 
 
@@ -272,8 +273,8 @@ _SEARCHBIOSAMPLESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=480,
-  serialized_end=569,
+  serialized_start=510,
+  serialized_end=599,
 )
 
 _SEARCHINDIVIDUALSRESPONSE.fields_by_name['individuals'].message_type = ga4gh_dot_bio__metadata__pb2._INDIVIDUAL
