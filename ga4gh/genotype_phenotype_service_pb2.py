@@ -16,15 +16,16 @@ _sym_db = _symbol_database.Default()
 from ga4gh import common_pb2 as ga4gh_dot_common__pb2
 from ga4gh import metadata_pb2 as ga4gh_dot_metadata__pb2
 from ga4gh import genotype_phenotype_pb2 as ga4gh_dot_genotype__phenotype__pb2
+from elgoog.api import annotations_pb2 as elgoog_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ga4gh/genotype_phenotype_service.proto',
   package='ga4gh',
   syntax='proto3',
-  serialized_pb=_b('\n&ga4gh/genotype_phenotype_service.proto\x12\x05ga4gh\x1a\x12ga4gh/common.proto\x1a\x14ga4gh/metadata.proto\x1a\x1ega4gh/genotype_phenotype.proto\"b\n%SearchPhenotypeAssociationSetsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x03\x12\x12\n\npage_token\x18\x03 \x01(\t\"\x85\x01\n&SearchPhenotypeAssociationSetsResponse\x12\x42\n\x1aphenotype_association_sets\x18\x01 \x03(\x0b\x32\x1e.ga4gh.PhenotypeAssociationSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"7\n\x11OntologyTermQuery\x12\"\n\x05terms\x18\x01 \x03(\x0b\x32\x13.ga4gh.OntologyTerm\"A\n\x17\x45xternalIdentifierQuery\x12&\n\x03ids\x18\x01 \x03(\x0b\x32\x19.ga4gh.ExternalIdentifier\"\x88\x01\n\rEvidenceQuery\x12)\n\x0c\x65videnceType\x18\x01 \x01(\x0b\x32\x13.ga4gh.OntologyTerm\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x37\n\x14\x65xternal_identifiers\x18\x03 \x03(\x0b\x32\x19.ga4gh.ExternalIdentifier\"\xfe\x01\n\x17SearchPhenotypesRequest\x12$\n\x1cphenotype_association_set_id\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12!\n\x04type\x18\x04 \x01(\x0b\x32\x13.ga4gh.OntologyTerm\x12\'\n\nqualifiers\x18\x05 \x03(\x0b\x32\x13.ga4gh.OntologyTerm\x12)\n\x0c\x61ge_of_onset\x18\x06 \x01(\x0b\x32\x13.ga4gh.OntologyTerm\x12\x11\n\tpage_size\x18\x07 \x01(\x03\x12\x12\n\npage_token\x18\x08 \x01(\t\"a\n\x18SearchPhenotypesResponse\x12,\n\nphenotypes\x18\x01 \x03(\x0b\x32\x18.ga4gh.PhenotypeInstance\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\xc1\x01\n\x1eSearchGenotypePhenotypeRequest\x12$\n\x1cphenotype_association_set_id\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_ids\x18\x02 \x03(\t\x12\x15\n\rphenotype_ids\x18\x03 \x03(\t\x12&\n\x08\x65vidence\x18\x04 \x03(\x0b\x32\x14.ga4gh.EvidenceQuery\x12\x11\n\tpage_size\x18\x05 \x01(\x03\x12\x12\n\npage_token\x18\x06 \x01(\t\"t\n\x1fSearchGenotypePhenotypeResponse\x12\x38\n\x0c\x61ssociations\x18\x01 \x03(\x0b\x32\".ga4gh.FeaturePhenotypeAssociation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\xdb\x02\n\x18GenotypePhenotypeService\x12}\n\x1eSearchPhenotypeAssociationSets\x12,.ga4gh.SearchPhenotypeAssociationSetsRequest\x1a-.ga4gh.SearchPhenotypeAssociationSetsResponse\x12R\n\x0fSearchPhenotype\x12\x1e.ga4gh.SearchPhenotypesRequest\x1a\x1f.ga4gh.SearchPhenotypesResponse\x12l\n\x1bSearchPhenotypeAssociations\x12%.ga4gh.SearchGenotypePhenotypeRequest\x1a&.ga4gh.SearchGenotypePhenotypeResponseb\x06proto3')
+  serialized_pb=_b('\n&ga4gh/genotype_phenotype_service.proto\x12\x05ga4gh\x1a\x12ga4gh/common.proto\x1a\x14ga4gh/metadata.proto\x1a\x1ega4gh/genotype_phenotype.proto\x1a\x1c\x65lgoog/api/annotations.proto\"b\n%SearchPhenotypeAssociationSetsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x03\x12\x12\n\npage_token\x18\x03 \x01(\t\"\x85\x01\n&SearchPhenotypeAssociationSetsResponse\x12\x42\n\x1aphenotype_association_sets\x18\x01 \x03(\x0b\x32\x1e.ga4gh.PhenotypeAssociationSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"7\n\x11OntologyTermQuery\x12\"\n\x05terms\x18\x01 \x03(\x0b\x32\x13.ga4gh.OntologyTerm\"A\n\x17\x45xternalIdentifierQuery\x12&\n\x03ids\x18\x01 \x03(\x0b\x32\x19.ga4gh.ExternalIdentifier\"\x88\x01\n\rEvidenceQuery\x12)\n\x0c\x65videnceType\x18\x01 \x01(\x0b\x32\x13.ga4gh.OntologyTerm\x12\x13\n\x0b\x64\x65scription\x18\x02 \x01(\t\x12\x37\n\x14\x65xternal_identifiers\x18\x03 \x03(\x0b\x32\x19.ga4gh.ExternalIdentifier\"\xfe\x01\n\x17SearchPhenotypesRequest\x12$\n\x1cphenotype_association_set_id\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12!\n\x04type\x18\x04 \x01(\x0b\x32\x13.ga4gh.OntologyTerm\x12\'\n\nqualifiers\x18\x05 \x03(\x0b\x32\x13.ga4gh.OntologyTerm\x12)\n\x0c\x61ge_of_onset\x18\x06 \x01(\x0b\x32\x13.ga4gh.OntologyTerm\x12\x11\n\tpage_size\x18\x07 \x01(\x03\x12\x12\n\npage_token\x18\x08 \x01(\t\"a\n\x18SearchPhenotypesResponse\x12,\n\nphenotypes\x18\x01 \x03(\x0b\x32\x18.ga4gh.PhenotypeInstance\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\xc1\x01\n\x1eSearchGenotypePhenotypeRequest\x12$\n\x1cphenotype_association_set_id\x18\x01 \x01(\t\x12\x13\n\x0b\x66\x65\x61ture_ids\x18\x02 \x03(\t\x12\x15\n\rphenotype_ids\x18\x03 \x03(\t\x12&\n\x08\x65vidence\x18\x04 \x03(\x0b\x32\x14.ga4gh.EvidenceQuery\x12\x11\n\tpage_size\x18\x05 \x01(\x03\x12\x12\n\npage_token\x18\x06 \x01(\t\"t\n\x1fSearchGenotypePhenotypeResponse\x12\x38\n\x0c\x61ssociations\x18\x01 \x03(\x0b\x32\".ga4gh.FeaturePhenotypeAssociation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t2\xf5\x03\n\x18GenotypePhenotypeService\x12\xb3\x01\n\x1eSearchPhenotypeAssociationSets\x12,.ga4gh.SearchPhenotypeAssociationSetsRequest\x1a-.ga4gh.SearchPhenotypeAssociationSetsResponse\"4\x82\xd3\xe4\x93\x02.\")/v0.6.0a8/phenotypeassociationsets/search:\x01*\x12z\n\x0fSearchPhenotype\x12\x1e.ga4gh.SearchPhenotypesRequest\x1a\x1f.ga4gh.SearchPhenotypesResponse\"&\x82\xd3\xe4\x93\x02 \"\x1b/v0.6.0a8/phenotypes/search:\x01*\x12\xa6\x01\n\x1bSearchPhenotypeAssociations\x12%.ga4gh.SearchGenotypePhenotypeRequest\x1a&.ga4gh.SearchGenotypePhenotypeResponse\"8\x82\xd3\xe4\x93\x02\x32\"-/v0.6.0a8/featurephenotypeassociations/search:\x01*b\x06proto3')
   ,
-  dependencies=[ga4gh_dot_common__pb2.DESCRIPTOR,ga4gh_dot_metadata__pb2.DESCRIPTOR,ga4gh_dot_genotype__phenotype__pb2.DESCRIPTOR,])
+  dependencies=[ga4gh_dot_common__pb2.DESCRIPTOR,ga4gh_dot_metadata__pb2.DESCRIPTOR,ga4gh_dot_genotype__phenotype__pb2.DESCRIPTOR,elgoog_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -70,8 +71,8 @@ _SEARCHPHENOTYPEASSOCIATIONSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=123,
-  serialized_end=221,
+  serialized_start=153,
+  serialized_end=251,
 )
 
 
@@ -108,8 +109,8 @@ _SEARCHPHENOTYPEASSOCIATIONSETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=224,
-  serialized_end=357,
+  serialized_start=254,
+  serialized_end=387,
 )
 
 
@@ -139,8 +140,8 @@ _ONTOLOGYTERMQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=359,
-  serialized_end=414,
+  serialized_start=389,
+  serialized_end=444,
 )
 
 
@@ -170,8 +171,8 @@ _EXTERNALIDENTIFIERQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=416,
-  serialized_end=481,
+  serialized_start=446,
+  serialized_end=511,
 )
 
 
@@ -215,8 +216,8 @@ _EVIDENCEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=484,
-  serialized_end=620,
+  serialized_start=514,
+  serialized_end=650,
 )
 
 
@@ -295,8 +296,8 @@ _SEARCHPHENOTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=623,
-  serialized_end=877,
+  serialized_start=653,
+  serialized_end=907,
 )
 
 
@@ -333,8 +334,8 @@ _SEARCHPHENOTYPESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=879,
-  serialized_end=976,
+  serialized_start=909,
+  serialized_end=1006,
 )
 
 
@@ -399,8 +400,8 @@ _SEARCHGENOTYPEPHENOTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=979,
-  serialized_end=1172,
+  serialized_start=1009,
+  serialized_end=1202,
 )
 
 
@@ -437,8 +438,8 @@ _SEARCHGENOTYPEPHENOTYPERESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1174,
-  serialized_end=1290,
+  serialized_start=1204,
+  serialized_end=1320,
 )
 
 _SEARCHPHENOTYPEASSOCIATIONSETSRESPONSE.fields_by_name['phenotype_association_sets'].message_type = ga4gh_dot_genotype__phenotype__pb2._PHENOTYPEASSOCIATIONSET

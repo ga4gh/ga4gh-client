@@ -15,15 +15,16 @@ _sym_db = _symbol_database.Default()
 
 from ga4gh import allele_annotations_pb2 as ga4gh_dot_allele__annotations__pb2
 from ga4gh import metadata_pb2 as ga4gh_dot_metadata__pb2
+from elgoog.api import annotations_pb2 as elgoog_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ga4gh/allele_annotation_service.proto',
   package='ga4gh',
   syntax='proto3',
-  serialized_pb=_b('\n%ga4gh/allele_annotation_service.proto\x12\x05ga4gh\x1a\x1ega4gh/allele_annotations.proto\x1a\x14ga4gh/metadata.proto\"\xdb\x01\n\x1fSearchVariantAnnotationsRequest\x12!\n\x19variant_annotation_set_id\x18\x01 \x01(\t\x12\x16\n\x0ereference_name\x18\x02 \x01(\t\x12\x14\n\x0creference_id\x18\x03 \x01(\t\x12\r\n\x05start\x18\x04 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x05 \x01(\x03\x12$\n\x07\x65\x66\x66\x65\x63ts\x18\x06 \x03(\x0b\x32\x13.ga4gh.OntologyTerm\x12\x11\n\tpage_size\x18\x07 \x01(\x05\x12\x12\n\npage_token\x18\x08 \x01(\t\"r\n SearchVariantAnnotationsResponse\x12\x35\n\x13variant_annotations\x18\x01 \x03(\x0b\x32\x18.ga4gh.VariantAnnotation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"c\n\"SearchVariantAnnotationSetsRequest\x12\x16\n\x0evariant_set_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"|\n#SearchVariantAnnotationSetsResponse\x12<\n\x17variant_annotation_sets\x18\x01 \x03(\x0b\x32\x1b.ga4gh.VariantAnnotationSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"C\n\x1eGetVariantAnnotationSetRequest\x12!\n\x19variant_annotation_set_id\x18\x01 \x01(\t2\xdb\x02\n\x17\x41lleleAnnotationService\x12k\n\x18SearchVariantAnnotations\x12&.ga4gh.SearchVariantAnnotationsRequest\x1a\'.ga4gh.SearchVariantAnnotationsResponse\x12t\n\x1bSearchVariantAnnotationSets\x12).ga4gh.SearchVariantAnnotationSetsRequest\x1a*.ga4gh.SearchVariantAnnotationSetsResponse\x12]\n\x17GetVariantAnnotationSet\x12%.ga4gh.GetVariantAnnotationSetRequest\x1a\x1b.ga4gh.VariantAnnotationSetb\x06proto3')
+  serialized_pb=_b('\n%ga4gh/allele_annotation_service.proto\x12\x05ga4gh\x1a\x1ega4gh/allele_annotations.proto\x1a\x14ga4gh/metadata.proto\x1a\x1c\x65lgoog/api/annotations.proto\"\xdb\x01\n\x1fSearchVariantAnnotationsRequest\x12!\n\x19variant_annotation_set_id\x18\x01 \x01(\t\x12\x16\n\x0ereference_name\x18\x02 \x01(\t\x12\x14\n\x0creference_id\x18\x03 \x01(\t\x12\r\n\x05start\x18\x04 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x05 \x01(\x03\x12$\n\x07\x65\x66\x66\x65\x63ts\x18\x06 \x03(\x0b\x32\x13.ga4gh.OntologyTerm\x12\x11\n\tpage_size\x18\x07 \x01(\x05\x12\x12\n\npage_token\x18\x08 \x01(\t\"r\n SearchVariantAnnotationsResponse\x12\x35\n\x13variant_annotations\x18\x01 \x03(\x0b\x32\x18.ga4gh.VariantAnnotation\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"c\n\"SearchVariantAnnotationSetsRequest\x12\x16\n\x0evariant_set_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"|\n#SearchVariantAnnotationSetsResponse\x12<\n\x17variant_annotation_sets\x18\x01 \x03(\x0b\x32\x1b.ga4gh.VariantAnnotationSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"C\n\x1eGetVariantAnnotationSetRequest\x12!\n\x19variant_annotation_set_id\x18\x01 \x01(\t2\x85\x04\n\x17\x41lleleAnnotationService\x12\x9b\x01\n\x18SearchVariantAnnotations\x12&.ga4gh.SearchVariantAnnotationsRequest\x1a\'.ga4gh.SearchVariantAnnotationsResponse\".\x82\xd3\xe4\x93\x02(\"#/v0.6.0a8/variantannotations/search:\x01*\x12\xa7\x01\n\x1bSearchVariantAnnotationSets\x12).ga4gh.SearchVariantAnnotationSetsRequest\x1a*.ga4gh.SearchVariantAnnotationSetsResponse\"1\x82\xd3\xe4\x93\x02+\"&/v0.6.0a8/variantannotationsets/search:\x01*\x12\xa1\x01\n\x17GetVariantAnnotationSet\x12%.ga4gh.GetVariantAnnotationSetRequest\x1a\x1b.ga4gh.VariantAnnotationSet\"B\x82\xd3\xe4\x93\x02<\x12:/v0.6.0a8/variantannotationset/{variant_annotation_set_id}b\x06proto3')
   ,
-  dependencies=[ga4gh_dot_allele__annotations__pb2.DESCRIPTOR,ga4gh_dot_metadata__pb2.DESCRIPTOR,])
+  dependencies=[ga4gh_dot_allele__annotations__pb2.DESCRIPTOR,ga4gh_dot_metadata__pb2.DESCRIPTOR,elgoog_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -104,8 +105,8 @@ _SEARCHVARIANTANNOTATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=103,
-  serialized_end=322,
+  serialized_start=133,
+  serialized_end=352,
 )
 
 
@@ -142,8 +143,8 @@ _SEARCHVARIANTANNOTATIONSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=324,
-  serialized_end=438,
+  serialized_start=354,
+  serialized_end=468,
 )
 
 
@@ -187,8 +188,8 @@ _SEARCHVARIANTANNOTATIONSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=440,
-  serialized_end=539,
+  serialized_start=470,
+  serialized_end=569,
 )
 
 
@@ -225,8 +226,8 @@ _SEARCHVARIANTANNOTATIONSETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=541,
-  serialized_end=665,
+  serialized_start=571,
+  serialized_end=695,
 )
 
 
@@ -256,8 +257,8 @@ _GETVARIANTANNOTATIONSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=667,
-  serialized_end=734,
+  serialized_start=697,
+  serialized_end=764,
 )
 
 _SEARCHVARIANTANNOTATIONSREQUEST.fields_by_name['effects'].message_type = ga4gh_dot_metadata__pb2._ONTOLOGYTERM

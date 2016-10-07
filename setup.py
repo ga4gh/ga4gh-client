@@ -26,7 +26,7 @@ setup(
     description="A client for the GA4GH reference server",
     license='Apache License 2.0',
     long_description=long_description,
-    packages=["ga4gh"],
+    packages=["ga4gh", "elgoog", "elgoog.api"],
     include_package_data=True,
     zip_safe=True,
     author="Global Alliance for Genomics and Health",

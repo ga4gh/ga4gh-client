@@ -14,15 +14,16 @@ _sym_db = _symbol_database.Default()
 
 
 from ga4gh import sequence_annotations_pb2 as ga4gh_dot_sequence__annotations__pb2
+from elgoog.api import annotations_pb2 as elgoog_dot_api_dot_annotations__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='ga4gh/sequence_annotation_service.proto',
   package='ga4gh',
   syntax='proto3',
-  serialized_pb=_b('\n\'ga4gh/sequence_annotation_service.proto\x12\x05ga4gh\x1a ga4gh/sequence_annotations.proto\"U\n\x18SearchFeatureSetsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"]\n\x19SearchFeatureSetsResponse\x12\'\n\x0c\x66\x65\x61ture_sets\x18\x01 \x03(\x0b\x32\x11.ga4gh.FeatureSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\".\n\x14GetFeatureSetRequest\x12\x16\n\x0e\x66\x65\x61ture_set_id\x18\x01 \x01(\t\"\xd7\x01\n\x15SearchFeaturesRequest\x12\x16\n\x0e\x66\x65\x61ture_set_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0bgene_symbol\x18\x03 \x01(\t\x12\x11\n\tparent_id\x18\x04 \x01(\t\x12\x16\n\x0ereference_name\x18\x05 \x01(\t\x12\r\n\x05start\x18\x06 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x07 \x01(\x03\x12\x15\n\rfeature_types\x18\x08 \x03(\t\x12\x11\n\tpage_size\x18\t \x01(\x05\x12\x12\n\npage_token\x18\n \x01(\t\"S\n\x16SearchFeaturesResponse\x12 \n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\x0e.ga4gh.Feature\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\'\n\x11GetFeatureRequest\x12\x12\n\nfeature_id\x18\x01 \x01(\t2\xbb\x02\n\x19SequenceAnnotationService\x12V\n\x11SearchFeatureSets\x12\x1f.ga4gh.SearchFeatureSetsRequest\x1a .ga4gh.SearchFeatureSetsResponse\x12?\n\rGetFeatureSet\x12\x1b.ga4gh.GetFeatureSetRequest\x1a\x11.ga4gh.FeatureSet\x12M\n\x0eSearchFeatures\x12\x1c.ga4gh.SearchFeaturesRequest\x1a\x1d.ga4gh.SearchFeaturesResponse\x12\x36\n\nGetFeature\x12\x18.ga4gh.GetFeatureRequest\x1a\x0e.ga4gh.Featureb\x06proto3')
+  serialized_pb=_b('\n\'ga4gh/sequence_annotation_service.proto\x12\x05ga4gh\x1a ga4gh/sequence_annotations.proto\x1a\x1c\x65lgoog/api/annotations.proto\"U\n\x18SearchFeatureSetsRequest\x12\x12\n\ndataset_id\x18\x01 \x01(\t\x12\x11\n\tpage_size\x18\x02 \x01(\x05\x12\x12\n\npage_token\x18\x03 \x01(\t\"]\n\x19SearchFeatureSetsResponse\x12\'\n\x0c\x66\x65\x61ture_sets\x18\x01 \x03(\x0b\x32\x11.ga4gh.FeatureSet\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\".\n\x14GetFeatureSetRequest\x12\x16\n\x0e\x66\x65\x61ture_set_id\x18\x01 \x01(\t\"\xd7\x01\n\x15SearchFeaturesRequest\x12\x16\n\x0e\x66\x65\x61ture_set_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x13\n\x0bgene_symbol\x18\x03 \x01(\t\x12\x11\n\tparent_id\x18\x04 \x01(\t\x12\x16\n\x0ereference_name\x18\x05 \x01(\t\x12\r\n\x05start\x18\x06 \x01(\x03\x12\x0b\n\x03\x65nd\x18\x07 \x01(\x03\x12\x15\n\rfeature_types\x18\x08 \x03(\t\x12\x11\n\tpage_size\x18\t \x01(\x05\x12\x12\n\npage_token\x18\n \x01(\t\"S\n\x16SearchFeaturesResponse\x12 \n\x08\x66\x65\x61tures\x18\x01 \x03(\x0b\x32\x0e.ga4gh.Feature\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t\"\'\n\x11GetFeatureRequest\x12\x12\n\nfeature_id\x18\x01 \x01(\t2\xe3\x03\n\x19SequenceAnnotationService\x12\x7f\n\x11SearchFeatureSets\x12\x1f.ga4gh.SearchFeatureSetsRequest\x1a .ga4gh.SearchFeatureSetsResponse\"\'\x82\xd3\xe4\x93\x02!\"\x1c/v0.6.0a8/featuresets/search:\x01*\x12o\n\rGetFeatureSet\x12\x1b.ga4gh.GetFeatureSetRequest\x1a\x11.ga4gh.FeatureSet\".\x82\xd3\xe4\x93\x02(\x12&/v0.6.0a8/featuresets/{feature_set_id}\x12s\n\x0eSearchFeatures\x12\x1c.ga4gh.SearchFeaturesRequest\x1a\x1d.ga4gh.SearchFeaturesResponse\"$\x82\xd3\xe4\x93\x02\x1e\"\x19/v0.6.0a8/features/search:\x01*\x12_\n\nGetFeature\x12\x18.ga4gh.GetFeatureRequest\x1a\x0e.ga4gh.Feature\"\'\x82\xd3\xe4\x93\x02!\x12\x1f/v0.6.0a8/features/{feature_id}b\x06proto3')
   ,
-  dependencies=[ga4gh_dot_sequence__annotations__pb2.DESCRIPTOR,])
+  dependencies=[ga4gh_dot_sequence__annotations__pb2.DESCRIPTOR,elgoog_dot_api_dot_annotations__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -68,8 +69,8 @@ _SEARCHFEATURESETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=84,
-  serialized_end=169,
+  serialized_start=114,
+  serialized_end=199,
 )
 
 
@@ -106,8 +107,8 @@ _SEARCHFEATURESETSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=171,
-  serialized_end=264,
+  serialized_start=201,
+  serialized_end=294,
 )
 
 
@@ -137,8 +138,8 @@ _GETFEATURESETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=266,
-  serialized_end=312,
+  serialized_start=296,
+  serialized_end=342,
 )
 
 
@@ -231,8 +232,8 @@ _SEARCHFEATURESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=315,
-  serialized_end=530,
+  serialized_start=345,
+  serialized_end=560,
 )
 
 
@@ -269,8 +270,8 @@ _SEARCHFEATURESRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=532,
-  serialized_end=615,
+  serialized_start=562,
+  serialized_end=645,
 )
 
 
@@ -300,8 +301,8 @@ _GETFEATUREREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=617,
-  serialized_end=656,
+  serialized_start=647,
+  serialized_end=686,
 )
 
 _SEARCHFEATURESETSRESPONSE.fields_by_name['feature_sets'].message_type = ga4gh_dot_sequence__annotations__pb2._FEATURESET
