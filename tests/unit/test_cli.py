@@ -9,8 +9,8 @@ import json
 import mock
 import unittest
 
-import ga4gh.cli as cli_client
-import ga4gh.protocol as protocol
+import ga4gh_client.cli as cli_client
+import ga4gh_client.protocol as protocol
 import google.protobuf.descriptor as descriptor
 import google.protobuf.internal.python_message as python_message
 import tests.utils as utils
