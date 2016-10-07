@@ -26,7 +26,7 @@ setup(
     description="A client for the GA4GH reference server",
     license='Apache License 2.0',
     long_description=long_description,
-    packages=["ga4gh", "elgoog", "elgoog.api"],
+    packages=["ga4gh_client", "elgoog", "elgoog.api"],
     include_package_data=True,
     zip_safe=True,
     author="Global Alliance for Genomics and Health",
@@ -34,7 +34,7 @@ setup(
     url="https://github.com/ga4gh/ga4gh-client",
     entry_points={
         'console_scripts': [
-            'ga4gh_client=ga4gh.cli:client_main',
+            'ga4gh_client=ga4gh_client.cli:client_main',
         ]
     },
     classifiers=[
@@ -50,6 +50,6 @@ setup(
     # Use setuptools_scm to set the version number automatically from Git
     setup_requires=['setuptools_scm'],
     use_scm_version={
-        "write_to": "ga4gh/_version.py"
+        "write_to": "ga4gh_client/_version.py"
     },
 )

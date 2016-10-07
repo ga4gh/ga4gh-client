@@ -11,7 +11,7 @@ install:
   - pip install pip --upgrade
   - pip install setuptools
   - python setup.py sdist
-  - pip install dist/ga4gh*.tar.gz
+  - pip install dist/ga4gh_client*.tar.gz
 # every installable in setup.py's entry_points should be tested here
   - ga4gh_client --version
 
@@ -27,8 +27,8 @@ before_script:
 # run_tests.py runs everything under the script: tag so only put commands
 # under it that we want to run (and want to be able to run) as local tests
 script: 
-  - flake8 *.py tests ga4gh scripts
-              --exclude=ez_setup.py,ga4gh/*_pb2.py,ga4gh/datamodel/obo_parser.py
-  - nosetests --with-coverage --cover-package ga4gh
+  - flake8 *.py tests ga4gh_client scripts
+              --exclude=ez_setup.py,ga4gh_client/*_pb2.py
+  - nosetests --with-coverage --cover-package ga4gh_client
               --cover-inclusive --cover-min-percentage=70
               --cover-branches --cover-erase

@@ -11,10 +11,10 @@ import requests
 import argparse
 import operator
 
-import ga4gh
-import ga4gh.client as client
-import ga4gh.exceptions as exceptions
-import ga4gh.protocol as protocol
+import ga4gh_client
+import ga4gh_client.client as client
+import ga4gh_client.exceptions as exceptions
+import ga4gh_client.protocol as protocol
 
 
 ###############
@@ -76,7 +76,7 @@ def addVersionArgument(parser):
     versionString = (
         "GA4GH Client Version {}\n"
         "(Protocol Version {})".format(
-            ga4gh.__version__, protocol.version))
+            ga4gh_client.__version__, protocol.version))
     parser.add_argument(
         "--version", version=versionString, action="version")
 
