@@ -1,16 +1,13 @@
 Things to do for the ga4gh-client (and related) repos, roughly
 in order of how I think they should be done:
 
-- get a barely working client
-    - change ga4gh folder to ga4gh_client
-- create ga4gh_client pypi package
-- docs
-    - enable readthedocs
-    - migrate client-related docs from ga4gh into ga4gh_client
-- tests
-    - ensure client code can interact with server
-- create ga4gh-common package, make ga4gh and ga4gh-client depend on it
+- create ga4gh-schemas package, make ga4gh and ga4gh-client depend on it
+- create ga4gh-common package, make ga4gh and ga4gh-client (and maybe ga4gh-schemas) depend on it
 - create ga4gh-server package and migrate ga4gh to it
 - make ga4gh-server depend on ga4gh-client
 - cleanup
     - eliminate client code parts of server
+    - migrate relevant tests to ga4gh-client
+    - migrate relevant docs to ga4gh-client
+- tests
+    - ensure client code can interact with server
