@@ -32,3 +32,5 @@ script:
   - nosetests --with-coverage --cover-package ga4gh_client
               --cover-inclusive --cover-min-percentage=70
               --cover-branches --cover-erase
+  - make clean -C docs
+  - make html -C docs
