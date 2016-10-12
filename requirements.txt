@@ -5,6 +5,3 @@
 # in the order that they should be in in setup.py
 requests
 protobuf==3.0.0b3
-
-# We need sphinx-argparse to build on readthedocs.
-sphinx-argparse
