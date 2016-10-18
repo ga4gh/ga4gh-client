@@ -13,7 +13,7 @@ import ga4gh_client.cli as cli_client
 import ga4gh_client.protocol as protocol
 import google.protobuf.descriptor as descriptor
 import google.protobuf.internal.python_message as python_message
-import tests.utils as utils
+import ga4gh_common.utils as utils
 
 
 class TestClientArguments(unittest.TestCase):
