@@ -15,7 +15,7 @@ import fnmatch
 import re
 import argparse
 
-import utils
+import ga4gh_common.utils as utils
 
 
 class ProtobufGenerator(object):
