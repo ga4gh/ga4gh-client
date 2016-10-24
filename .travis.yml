@@ -22,8 +22,7 @@ before_script:
 # run_tests.py runs everything under the script: tag so only put commands
 # under it that we want to run (and want to be able to run) as local tests
 script: 
-  - flake8 *.py tests ga4gh_client scripts
-              --exclude=ga4gh_client/*_pb2.py
+  - flake8 client_dev.py setup.py tests ga4gh_client scripts
   - nosetests tests
               --with-coverage --cover-package ga4gh_client
               --cover-inclusive --cover-min-percentage=70
