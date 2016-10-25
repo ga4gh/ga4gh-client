@@ -10,8 +10,9 @@ import posixpath
 import logging
 
 import ga4gh_client.protocol as protocol
-import ga4gh_client.pb as pb
 import ga4gh_client.exceptions as exceptions
+
+import ga4gh_schemas.pb as pb
 
 
 class AbstractClient(object):

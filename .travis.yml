@@ -25,7 +25,7 @@ script:
   - flake8 client_dev.py setup.py tests ga4gh_client scripts
   - nosetests tests
               --with-coverage --cover-package ga4gh_client
-              --cover-inclusive --cover-min-percentage=70
+              --cover-inclusive --cover-min-percentage=50
               --cover-branches --cover-erase
   - make clean -C docs
   - make html -C docs
