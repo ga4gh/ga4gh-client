@@ -5,7 +5,7 @@ import ga4gh_common.setup as setup
 packageDict = {
     "name": "ga4gh_client",
     "description": "A client for the GA4GH reference server",
-    "packages": ["ga4gh_client", "elgoog", "elgoog.api"],
+    "packages": ["ga4gh_client"],
     "url": "https://github.com/ga4gh/ga4gh-client",
     "use_scm_version": {"write_to": "ga4gh_client/_version.py"},
     "entry_points": {
