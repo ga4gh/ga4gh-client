@@ -10,7 +10,6 @@ cache:
 install:
   - pip install pip --upgrade
   - pip install setuptools
-  - pip install ga4gh-common # need ga4gh_common.setup for sdist
   - python setup.py sdist
   - pip install dist/ga4gh_client*.tar.gz
 # every installable in setup.py's entry_points should be tested here
@@ -29,3 +28,7 @@ script:
               --cover-branches --cover-erase
   - make clean -C docs
   - make html -C docs
+
+after_success:
+# run codecov
+  - bash <(curl -s https://codecov.io/bash)
