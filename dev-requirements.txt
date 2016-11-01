@@ -11,3 +11,4 @@ coverage
 humanize
 PyYAML
 sphinx-argparse
+sphinx-rtd-theme
