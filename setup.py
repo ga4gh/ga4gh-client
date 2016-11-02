@@ -27,12 +27,13 @@ setup(
     # END BOILERPLATE
     name="ga4gh_client",
     description="A client for the GA4GH reference server",
-    packages=["ga4gh_client"],
+    packages=["ga4gh", "ga4gh.client"],
+    namespace_packages=["ga4gh"],
     url="https://github.com/ga4gh/ga4gh-client",
-    use_scm_version={"write_to": "ga4gh_client/_version.py"},
+    use_scm_version={"write_to": "ga4gh/client/_version.py"},
     entry_points={
         'console_scripts': [
-            'ga4gh_client=ga4gh_client.cli:client_main',
+            'ga4gh_client=ga4gh.client.cli:client_main',
         ]
     },
     # BEGIN BOILERPLATE
