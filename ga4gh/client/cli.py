@@ -9,12 +9,12 @@ import json
 import logging
 import requests
 
-import ga4gh_client
-import ga4gh_client.client as client
-import ga4gh_client.exceptions as exceptions
-import ga4gh_client.protocol as protocol
+import ga4gh.client
+import ga4gh.client.client as client
+import ga4gh.client.exceptions as exceptions
+import ga4gh.client.protocol as protocol
 
-import ga4gh_common.cli as cli
+import ga4gh.common.cli as cli
 
 
 ###############
@@ -36,7 +36,7 @@ def addVersionArgument(parser):
     versionString = (
         "GA4GH Client Version {}\n"
         "(Protocol Version {})".format(
-            ga4gh_client.__version__, protocol.version))
+            ga4gh.client.__version__, protocol.version))
     parser.add_argument(
         "--version", version=versionString, action="version")
 

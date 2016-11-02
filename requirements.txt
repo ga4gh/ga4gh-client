@@ -3,7 +3,7 @@
 #
 # These requirements are read directly into setup.py, so specify them
 # in the order that they should be in in setup.py
-ga4gh_common==0.0.4
-ga4gh_schemas==0.0.7
+ga4gh_common==0.0.5
+ga4gh_schemas==0.0.8
 requests
 protobuf==3.0.0b3
