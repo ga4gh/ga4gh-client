@@ -19,6 +19,12 @@
 import os
 import sys
 sys.path.insert(0, os.path.abspath('..'))
+
+# the following two lines are similar ones to those in dev_glue.py
+# they enable python to find the ga4gh.client package
+import ga4gh
+ga4gh.__path__.insert(0, '../ga4gh')
+
 import ga4gh.client
 
 # -- General configuration ------------------------------------------------
