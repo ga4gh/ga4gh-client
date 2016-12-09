@@ -23,8 +23,21 @@ with open("requirements.txt") as requirementsFile:
         pinnedVersion = line.split()[0]
         install_requires.append(pinnedVersion)
 
+dependency_links = []
+try:
+    with open("constraints.txt") as constraintsFile:
+        for line in constraintsFile:
+            line = line.strip()
+            if len(line) == 0:
+                continue
+            if line[0] == '#':
+                continue
+            dependency_links.append(line)
+except EnvironmentError:
+    print('No constraints file found, proceeding without '
+          'creating dependency links.')
+
 setup(
-    # END BOILERPLATE
     name="ga4gh_client",
     description="A client for the GA4GH reference server",
     packages=["ga4gh", "ga4gh.client"],
@@ -36,9 +49,9 @@ setup(
             'ga4gh_client=ga4gh.client.cli:client_main',
         ]
     },
-    # BEGIN BOILERPLATE
     long_description=long_description,
     install_requires=install_requires,
+    dependency_links=dependency_links,
     license='Apache License 2.0',
     include_package_data=True,
     zip_safe=True,
