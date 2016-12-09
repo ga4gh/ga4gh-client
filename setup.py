@@ -32,8 +32,7 @@ try:
                 continue
             if line[0] == '#':
                 continue
-            if line.find('git') != -1:
-                dependency_links.append(line)
+            dependency_links.append(line)
 except EnvironmentError:
     print('No constraints file found, proceeding without '
           'creating dependency links.')
