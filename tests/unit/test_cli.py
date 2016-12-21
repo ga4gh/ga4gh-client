@@ -131,7 +131,7 @@ class TestClientArguments(unittest.TestCase):
         self.assertEqual(args.baseUrl, "BASEURL")
         self.assertEquals(args.runner, cli_client.SearchReadsRunner)
 
-    def testBioSamplesSearchArguments(self):
+    def testBiosamplesSearchArguments(self):
         cliInput = (
             "biosamples-search --pageSize 2 --name BIOSAMPLENAME "
             "--datasetId DATASETID "
@@ -141,7 +141,7 @@ class TestClientArguments(unittest.TestCase):
         self.assertEqual(args.name, "BIOSAMPLENAME")
         self.assertEqual(args.datasetId, "DATASETID")
         self.assertEqual(args.baseUrl, "BASEURL")
-        self.assertEquals(args.runner, cli_client.SearchBioSamplesRunner)
+        self.assertEquals(args.runner, cli_client.SearchBiosamplesRunner)
 
     def testIndividualsSearchArguments(self):
         cliInput = (
@@ -213,9 +213,9 @@ class TestClientArguments(unittest.TestCase):
         self.verifyGetArguments(
             "referencesets-get", cli_client.GetReferenceSetRunner)
 
-    def testBioSamplesGetArguments(self):
+    def testBiosamplesGetArguments(self):
         self.verifyGetArguments(
-            "biosamples-get", cli_client.GetBioSampleRunner)
+            "biosamples-get", cli_client.GetBiosampleRunner)
 
     def testIndividualsGetArguments(self):
         self.verifyGetArguments(
