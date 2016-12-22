@@ -481,7 +481,9 @@ class VariantFormatterMixin(object):
             print("\t", end="")
             for c in variant.calls:
                 print(
-                    c.call_set_id, c.genotype, c.genotype_likelihood, c.info,
+                    c.call_set_id,
+                    c.genotype.__str__().replace('\n', ''),
+                    c.genotype_likelihood, c.info,
                     c.phaseset, sep=":", end="\t")
             print()
 
