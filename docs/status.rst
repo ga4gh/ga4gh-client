@@ -5,6 +5,12 @@ Release Notes
 +++++++++++++
 
 *****
+0.0.3
+*****
+
+Add hierachical namespace
+
+*****
 0.0.2
 *****
 
