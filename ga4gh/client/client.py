@@ -762,14 +762,18 @@ class HttpClient(AbstractClient):
         the :mod:`logging` module. This is :data:`logging.WARNING` by default.
     :param str authentication_key: The authentication key provided by the
         server after logging in.
+    :param str id_token: The Auth0 id_token key provided by the
+        server after logging in.
     """
 
     def __init__(
             self, url_prefix, logLevel=logging.WARNING,
-            authentication_key=None):
+            authentication_key=None,
+            id_token=None):
         super(HttpClient, self).__init__(logLevel)
         self._url_prefix = url_prefix
         self._authentication_key = authentication_key
+        self._id_token = id_token
         self._session = requests.Session()
         self._setup_http_session()
         requests_log = logging.getLogger("requests.packages.urllib3")
@@ -781,6 +785,9 @@ class HttpClient(AbstractClient):
         Sets up the common HTTP session parameters used by requests.
         """
         headers = {"Content-type": "application/json"}
+        if (self._id_token):
+            headers.update({"authorization": "Bearer {}".format(
+                self._id_token)})
         self._session.headers.update(headers)
         # TODO is this unsafe????
         self._session.verify = False

@@ -392,6 +392,7 @@ class TestOutputFormats(unittest.TestCase):
             self.outputFormat = outputFormat
             self.id = 'id'
             self.key = 'key'
+            self.auth0_token = 'auth0_token'
             self.baseUrl = 'baseUrl'
             self.verbose = 'verbose'
 

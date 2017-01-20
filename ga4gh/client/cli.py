@@ -40,7 +40,6 @@ def addVersionArgument(parser):
     parser.add_argument(
         "--version", version=versionString, action="version")
 
-
 ###############
 # Client
 ###############
@@ -64,8 +63,12 @@ class AbstractQueryRunner(object):
     """
     def __init__(self, args):
         self._key = args.key
+        self._auth0_token = args.auth0_token
         self._client = client.HttpClient(
-            args.baseUrl, verbosityToLogLevel(args.verbose), self._key)
+            args.baseUrl,
+            verbosityToLogLevel(args.verbose),
+            self._key,
+            self._auth0_token)
 
 
 class FormattedOutputRunner(AbstractQueryRunner):
@@ -1206,6 +1209,9 @@ def addClientGlobalOptions(parser):
     parser.add_argument(
         "--key", "-k", default='invalid',
         help="Auth Key. Found on server index page.")
+    parser.add_argument(
+        "--auth0-token", "-t", default=None,
+        help="A token generated using Auth0 login.")
     addDisableUrllibWarningsArgument(parser)
     addVersionArgument(parser)
 
