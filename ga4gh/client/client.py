@@ -274,6 +274,7 @@ class AbstractClient(object):
     def get_rna_quantification_set(self, rna_quantification_set_id):
         """
         Returns the RnaQuantificationSet with the specified ID from the server.
+
         :param str rna_quantification_set_id: The ID of the
             RnaQuantificationSet of interest.
         :return: The RnaQuantificationSet of interest.
@@ -286,6 +287,7 @@ class AbstractClient(object):
     def get_rna_quantification(self, rna_quantification_id):
         """
         Returns the RnaQuantification with the specified ID from the server.
+
         :param str rna_quantification_id: The ID of the RnaQuantification of
             interest.
         :return: The RnaQuantification of interest.
@@ -298,6 +300,7 @@ class AbstractClient(object):
     def get_expression_level(self, expression_level_id):
         """
         Returns the ExpressionLevel with the specified ID from the server.
+
         :param str expression_level_id: The ID of the ExpressionLevel of
             interest.
         :return: The ExpressionLevel of interest.

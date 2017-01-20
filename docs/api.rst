@@ -29,12 +29,6 @@ Client API
 
 .. todo:: Add overview documentation for the client API.
 
-.. autoclass:: ga4gh.client.client.HttpClient
-    :members: get_reference_set, get_reference,
-        get_dataset, get_variant_set, get_variant,
-        get_read_group_set, get_read_group,
-        get_biosample, get_individual,
-        search_datasets, search_reference_sets, search_references,
-        search_variant_sets, search_variants, search_read_group_sets,
-        search_reads, search_biosamples, search_individuals
+.. automodule:: ga4gh.client.client
+    :members:
 
