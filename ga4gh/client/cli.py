@@ -770,7 +770,7 @@ class SearchExpressionLevelsRunner(AbstractSearchRunner):
         for expression in expressionObjs:
             print(
                 expression.id, expression.expression, expression.name,
-                expression.isNormalized, expression.rawReadCount,
+                expression.is_normalized, expression.raw_read_count,
                 expression.score, expression.units, sep="\t", end="\t")
             print()
 
