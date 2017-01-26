@@ -4,6 +4,15 @@
 Release Notes
 +++++++++++++
 
+*************
+0.6.0a9.post1
+*************
+
+Bugfix release which fixes the following issues:
+
+* wrong attributes on RnaQuantification (#53)
+* wrong attributes on ExpressionLevels (#51)
+
 *******
 0.6.0a9
 *******
