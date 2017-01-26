@@ -740,9 +740,9 @@ class SearchRnaQuantificationsRunner(AbstractSearchRunner):
             print(
                 rnaQuant.id, rnaQuant.description, rnaQuant.name,
                 sep="\t", end="\t")
-            for featureSet in rnaQuant.featureSetIds:
+            for featureSet in rnaQuant.feature_set_ids:
                 print(featureSet, sep=",", end="\t")
-            for readGroup in rnaQuant.readGroupIds:
+            for readGroup in rnaQuant.read_group_ids:
                 print(readGroup, sep=",", end="")
             print()
 
