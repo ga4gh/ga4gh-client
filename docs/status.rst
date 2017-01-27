@@ -5,6 +5,12 @@ Release Notes
 +++++++++++++
 
 *************
+0.6.0a9.post2
+*************
+
+Bugfix release which uses the new release process.
+
+*************
 0.6.0a9.post1
 *************
 
