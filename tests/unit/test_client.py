@@ -127,7 +127,7 @@ class TestSearchMethodsCallRunRequest(unittest.TestCase):
                 reference_name=self.referenceName,
                 start=self.start,
                 end=self.end,
-                effects=[{"term": "just a term"}, {"id": "an id"}],
+                effects=[{"term": "just a term"}, {"term_id": "an id"}],
                 reference_id=self.referenceId)
 
     def testSearchFeatures(self):

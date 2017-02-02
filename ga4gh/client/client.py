@@ -381,7 +381,7 @@ class AbstractClient(object):
         for effect in effects:
             request.effects.add().CopyFrom(protocol.OntologyTerm(**effect))
         for effect in request.effects:
-            if not effect.id:
+            if not effect.term_id:
                 raise exceptions.ErrantRequestException(
                     "Each ontology term should have an id set")
         request.page_size = pb.int(self._page_size)
