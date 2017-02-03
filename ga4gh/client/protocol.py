@@ -18,7 +18,6 @@ import ga4gh.schemas.pb as pb
 
 from ga4gh.schemas._protocol_version import version  # noqa
 from ga4gh.schemas.ga4gh.common_pb2 import *  # noqa
-from ga4gh.schemas.ga4gh.assay_metadata_pb2 import *  # noqa
 from ga4gh.schemas.ga4gh.metadata_pb2 import *  # noqa
 from ga4gh.schemas.ga4gh.metadata_service_pb2 import *  # noqa
 from ga4gh.schemas.ga4gh.read_service_pb2 import *  # noqa

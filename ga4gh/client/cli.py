@@ -478,7 +478,7 @@ class VariantFormatterMixin(object):
                 variant.reference_name, variant.start, variant.end,
                 variant.reference_bases, variant.alternate_bases,
                 sep="\t", end="\t")
-            for key, value in variant.info.items():
+            for key, value in variant.attributes.attr.items():
                 val = value.values[0].string_value
                 print(key, val, sep="=", end=";")
             print("\t", end="")
@@ -486,7 +486,7 @@ class VariantFormatterMixin(object):
                 print(
                     c.call_set_id,
                     c.genotype.__str__().replace('\n', ''),
-                    c.genotype_likelihood, c.info,
+                    c.genotype_likelihood, c.attributes,
                     c.phaseset, sep=":", end="\t")
             print()
 
