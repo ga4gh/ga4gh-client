@@ -12,9 +12,9 @@ import requests
 import ga4gh.client
 import ga4gh.client.client as client
 import ga4gh.client.exceptions as exceptions
-import ga4gh.client.protocol as protocol
 
 import ga4gh.common.cli as cli
+import ga4gh.schemas.protocol as protocol
 
 
 ###############

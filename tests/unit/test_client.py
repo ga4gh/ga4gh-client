@@ -9,9 +9,10 @@ import unittest
 
 import mock
 
-import ga4gh.client.protocol as protocol
 import ga4gh.client.client as client
 import ga4gh.client.exceptions as exceptions
+
+import ga4gh.schemas.protocol as protocol
 
 
 class TestSearchMethodsCallRunRequest(unittest.TestCase):
