@@ -29,6 +29,7 @@ class TestSearchMethodsCallRunRequest(unittest.TestCase):
         self.variantSetId = "variantSetId"
         self.variantAnnotationSetId = "variantAnnotationSetId"
         self.featureSetId = "featureSetId"
+        self.continuousSetId = "continuousSetId"
         self.parentId = "parentId"
         self.feature = "feature"
         self.referenceSetId = "referenceSetId"
@@ -157,6 +158,27 @@ class TestSearchMethodsCallRunRequest(unittest.TestCase):
         self.httpClient.search_feature_sets(self.datasetId)
         self.httpClient._run_search_request.assert_called_once_with(
             request, "featuresets", protocol.SearchFeatureSetsResponse)
+
+    def testSearchContinuous(self):
+        request = protocol.SearchContinuousRequest()
+        request.continuous_set_id = self.continuousSetId
+        request.page_size = self.pageSize
+        request.reference_name = self.referenceName
+        request.start = self.start
+        request.end = self.end
+        self.httpClient.search_continuous(
+            self.continuousSetId, reference_name=self.referenceName,
+            start=self.start, end=self.end)
+        self.httpClient._run_search_request.assert_called_once_with(
+            request, "continuous", protocol.SearchContinuousResponse)
+
+    def testSearchContinuousSets(self):
+        request = protocol.SearchContinuousSetsRequest()
+        request.dataset_id = self.datasetId
+        request.page_size = self.pageSize
+        self.httpClient.search_continuous_sets(self.datasetId)
+        self.httpClient._run_search_request.assert_called_once_with(
+            request, "continuoussets", protocol.SearchContinuousSetsResponse)
 
     def testSearchReferenceSets(self):
         request = protocol.SearchReferenceSetsRequest()
@@ -353,6 +375,11 @@ class TestSearchMethodsCallRunRequest(unittest.TestCase):
         self.httpClient.get_feature(self.objectId)
         self.httpClient._run_get_request.assert_called_once_with(
             "features", protocol.Feature, self.objectId)
+
+    def testGetContinuousSet(self):
+        self.httpClient.get_continuous_set(self.objectId)
+        self.httpClient._run_get_request.assert_called_once_with(
+            "continuoussets", protocol.ContinuousSet, self.objectId)
 
     def testSearchGenotypePhenotype(self):
         request = protocol.SearchGenotypePhenotypeRequest()

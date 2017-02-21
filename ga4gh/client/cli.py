@@ -150,6 +150,16 @@ class AbstractSearchRunner(FormattedOutputRunner):
             for featureSet in iterator:
                 yield featureSet
 
+    def getAllContinuousSets(self):
+        """
+        Returns all continuous sets on the server.
+        """
+        for dataset in self.getAllDatasets():
+            iterator = self._client.search_continuous_sets(
+                dataset_id=dataset.id)
+            for continuousSet in iterator:
+                yield continuousSet
+
     def getAllReadGroupSets(self):
         """
         Returns all readgroup sets on the server.
@@ -331,6 +341,26 @@ class SearchFeatureSetsRunner(AbstractSearchRunner):
 
     def _run(self, datasetId):
         iterator = self._client.search_feature_sets(dataset_id=datasetId)
+        self._output(iterator)
+
+    def run(self):
+        if self._datasetId is None:
+            for dataset in self.getAllDatasets():
+                self._run(dataset.id)
+        else:
+            self._run(self._datasetId)
+
+
+class SearchContinuousSetsRunner(AbstractSearchRunner):
+    """
+    Runner class for the continuoussets/search method.
+    """
+    def __init__(self, args):
+        super(SearchContinuousSetsRunner, self).__init__(args)
+        self._datasetId = args.datasetId
+
+    def _run(self, datasetId):
+        iterator = self._client.search_continuous_sets(dataset_id=datasetId)
         self._output(iterator)
 
     def run(self):
@@ -534,6 +564,19 @@ class FeatureFormatterMixin(object):
             print()
 
 
+class ContinuousFormatterMixin(object):
+    """
+    Mix-in class to format Continuous (Sequence Annotation) objects
+    """
+    def _textOutput(self, gaObjects):
+        for continuous in gaObjects:
+            print(
+                continuous.continuous_set_id,
+                continuous.reference_name, continuous.start, continuous.values,
+                sep="\t", end="\t")
+            print()
+
+
 class SearchVariantsRunner(VariantFormatterMixin, AbstractSearchRunner):
     """
     Runner class for the variants/search method.
@@ -646,6 +689,32 @@ class SearchFeaturesRunner(FeatureFormatterMixin, AbstractSearchRunner):
                 self._run(featureSet)
         else:
             self._run(self._featureSetId)
+
+
+class SearchContinuousRunner(ContinuousFormatterMixin, AbstractSearchRunner):
+    """
+    Runner class for the continuous/search method.
+    """
+    def __init__(self, args):
+        super(SearchContinuousRunner, self).__init__(args)
+        self._referenceName = args.referenceName
+        self._continuousSetId = args.continuousSetId
+        self._start = args.start
+        self._end = args.end
+
+    def _run(self, continuousSetId):
+        iterator = self._client.search_continuous(
+            start=self._start, end=self._end,
+            reference_name=self._referenceName,
+            continuous_set_id=continuousSetId)
+        self._output(iterator)
+
+    def run(self):
+        if self._continuousSetId is None:
+            for continuousSet in self.getAllContinuousSets():
+                self._run(continuousSet)
+        else:
+            self._run(self._continuousSetId)
 
 
 class SearchReadsRunner(AbstractSearchRunner):
@@ -922,6 +991,15 @@ class GetFeatureSetRunner(AbstractGetRunner):
         self._method = self._client.get_feature_set
 
 
+class GetContinuousSetRunner(AbstractGetRunner):
+    """
+    Runner class for the continuoussets/{id} method
+    """
+    def __init__(self, args):
+        super(GetContinuousSetRunner, self).__init__(args)
+        self._method = self._client.get_continuous_set
+
+
 class GetRnaQuantificationRunner(AbstractGetRunner):
     """
     Runner class for the rnaquantifications/{id} method
@@ -984,6 +1062,16 @@ def addFeaturesSearchOptions(parser):
     addEndArgument(parser)
     addParentFeatureIdArgument(parser)
     addFeatureTypesArgument(parser)
+
+
+def addContinuousSearchOptions(parser):
+    """
+    Adds common options to a continuous search command line parser.
+    """
+    addContinuousSetIdArgument(parser)
+    addContinuousReferenceNameArgument(parser)
+    addStartArgument(parser)
+    addEndArgument(parser)
 
 
 def addGenotypePhenotypeSearchOptions(parser):
@@ -1055,6 +1143,12 @@ def addFeatureSetIdArgument(parser):
         help="The feature set id to search over")
 
 
+def addContinuousSetIdArgument(parser):
+    parser.add_argument(
+        "--continuousSetId", "-C", default=None,
+        help="The continuous set id to search over")
+
+
 def addReferenceNameArgument(parser):
     parser.add_argument(
         "--referenceName", "-r", default="1",
@@ -1065,6 +1159,12 @@ def addFeaturesReferenceNameArgument(parser):
     parser.add_argument(
         "--referenceName", "-r", default="",
         help="Only return variants on this reference.")
+
+
+def addContinuousReferenceNameArgument(parser):
+    parser.add_argument(
+        "--referenceName", "-r", default="",
+        help="Only return continuous values on this reference.")
 
 
 def addReferenceIdArgument(parser):
@@ -1297,6 +1397,13 @@ def addFeatureSetsGetParser(subparsers):
     addGetArguments(parser)
 
 
+def addContinuousSetsGetParser(subparsers):
+    parser = cli.addSubparser(
+        subparsers, "continuoussets-get", "Get a continuousSet by ID")
+    parser.set_defaults(runner=GetContinuousSetRunner)
+    addGetArguments(parser)
+
+
 def addBiosamplesGetParser(subparsers):
     parser = cli.addSubparser(
         subparsers, "biosamples-get", "Get a biosample by ID")
@@ -1353,12 +1460,38 @@ def addFeaturesSearchParser(subparsers):
     return parser
 
 
+def addContinuousSearchParser(subparsers):
+    parser = subparsers.add_parser(
+        "continuous-search",
+        description="Search for continuous valued data",
+        help="Search for continuous valued data.")
+    parser.set_defaults(runner=SearchContinuousRunner)
+    addUrlArgument(parser)
+    addOutputFormatArgument(parser)
+    addPageSizeArgument(parser)
+    addContinuousSearchOptions(parser)
+    return parser
+
+
 def addFeatureSetsSearchParser(subparsers):
     parser = subparsers.add_parser(
         "featuresets-search",
         description="Search for sequence annotation feature sets",
         help="Search for featureSets.")
     parser.set_defaults(runner=SearchFeatureSetsRunner)
+    addOutputFormatArgument(parser)
+    addUrlArgument(parser)
+    addPageSizeArgument(parser)
+    addDatasetIdArgument(parser)
+    return parser
+
+
+def addContinuousSetsSearchParser(subparsers):
+    parser = subparsers.add_parser(
+        "continuoussets-search",
+        description="Search for sequence annotation continuous  sets",
+        help="Search for continuousSets.")
+    parser.set_defaults(runner=SearchContinuousSetsRunner)
     addOutputFormatArgument(parser)
     addUrlArgument(parser)
     addPageSizeArgument(parser)
@@ -1635,6 +1768,9 @@ def getClientParser():
     addFeaturesGetParser(subparsers)
     addFeatureSetsGetParser(subparsers)
     addFeatureSetsSearchParser(subparsers)
+    addContinuousSearchParser(subparsers)
+    addContinuousSetsGetParser(subparsers)
+    addContinuousSetsSearchParser(subparsers)
     addBiosamplesSearchParser(subparsers)
     addBiosamplesGetParser(subparsers)
     addIndividualsSearchParser(subparsers)
