@@ -262,6 +262,10 @@ class TestClientArguments(unittest.TestCase):
         self.verifyGetArguments(
             "featuresets-get", cli_client.GetFeatureSetRunner)
 
+    def testContinuousSetsGet(self):
+        self.verifyGetArguments(
+            "continuoussets-get", cli_client.GetContinuousSetRunner)
+
     def testExpressionLevelsGet(self):
         self.verifyGetArguments(
             "expressionlevels-get", cli_client.GetExpressionLevelRunner)
@@ -364,6 +368,32 @@ class TestClientArguments(unittest.TestCase):
     def testFeatureSetsSearch(self):
         cliInput = (
             "featuresets-search "
+            "--pageSize 3 "
+            "--datasetId DATASETID "
+            "BASEURL")
+        args = self.parser.parse_args(cliInput.split())
+        self.assertEqual(args.pageSize, 3)
+        self.assertEqual(args.datasetId, "DATASETID")
+        self.assertEqual(args.baseUrl, "BASEURL")
+
+    def testContinuousSearch(self):
+        cliInput = (
+            "continuous-search "
+            "--pageSize 3 "
+            "--continuousSetId CONTINUOUSSETID "
+            "--start 1 "
+            "--end 2 "
+            "BASEURL")
+        args = self.parser.parse_args(cliInput.split())
+        self.assertEqual(args.pageSize, 3)
+        self.assertEqual(args.continuousSetId, "CONTINUOUSSETID")
+        self.assertEqual(args.start, 1)
+        self.assertEqual(args.end, 2)
+        self.assertEqual(args.baseUrl, "BASEURL")
+
+    def testContinuousSetsSearch(self):
+        cliInput = (
+            "continuoussets-search "
             "--pageSize 3 "
             "--datasetId DATASETID "
             "BASEURL")

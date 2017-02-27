@@ -271,6 +271,17 @@ class AbstractClient(object):
         return self._run_get_request(
             "features", protocol.Feature, feature_id)
 
+    def get_continuous_set(self, continuous_set_id):
+        """
+        Returns the ContinuousSet with the specified ID from the server.
+
+        :param str continuous_set_id: The ID of the ContinuousSet of interest.
+        :return: The ContinuousSet of interest.
+        :rtype: :class:`ga4gh.protocol.ContinuousSet`
+        """
+        return self._run_get_request(
+            "continuoussets", protocol.ContinuousSet, continuous_set_id)
+
     def get_rna_quantification_set(self, rna_quantification_set_id):
         """
         Returns the RnaQuantificationSet with the specified ID from the server.
@@ -422,6 +433,30 @@ class AbstractClient(object):
             request, "features",
             protocol.SearchFeaturesResponse)
 
+    def search_continuous(
+            self, continuous_set_id=None, reference_name="", start=0, end=0):
+        """
+        Returns the result of running a search_continuous method
+        on a request with the passed-in parameters.
+
+        :param str continuous_set_id: ID of the ContinuousSet being searched
+        :param str reference_name: name of the reference to search
+            (ex: "chr1")
+        :param int start: search start position on reference
+        :param int end: end position on reference
+        :return: an iterator over Continuous returned in the
+            SearchContinuousResponse object.
+        """
+        request = protocol.SearchContinuousRequest()
+        request.continuous_set_id = continuous_set_id
+        request.reference_name = reference_name
+        request.start = start
+        request.end = end
+        request.page_size = pb.int(self._page_size)
+        return self._run_search_request(
+            request, "continuous",
+            protocol.SearchContinuousResponse)
+
     def search_datasets(self):
         """
         Returns an iterator over the Datasets on the server.
@@ -482,6 +517,22 @@ class AbstractClient(object):
         request.page_size = pb.int(self._page_size)
         return self._run_search_request(
             request, "featuresets", protocol.SearchFeatureSetsResponse)
+
+    def search_continuous_sets(self, dataset_id):
+        """
+        Returns an iterator over the ContinuousSets fulfilling the specified
+        conditions from the specified Dataset.
+
+        :param str dataset_id: The ID of the
+            :class:`ga4gh.protocol.Dataset` of interest.
+        :return: An iterator over the :class:`ga4gh.protocol.ContinuousSet`
+            objects defined by the query parameters.
+        """
+        request = protocol.SearchContinuousSetsRequest()
+        request.dataset_id = dataset_id
+        request.page_size = pb.int(self._page_size)
+        return self._run_search_request(
+            request, "continuoussets", protocol.SearchContinuousSetsResponse)
 
     def search_reference_sets(
             self, accession=None, md5checksum=None, assembly_id=None):
@@ -853,6 +904,7 @@ class LocalClient(AbstractClient):
             "references": self._backend.runGetReference,
             "variantsets": self._backend.runGetVariantSet,
             "featuresets": self._backend.runGetFeatureSet,
+            "continuoussets": self._backend.runGetContinuousSet,
             "variants": self._backend.runGetVariant,
             "features": self._backend.runGetFeature,
             "readgroupsets": self._backend.runGetReadGroupSet,
@@ -871,8 +923,10 @@ class LocalClient(AbstractClient):
             "references": self._backend.runSearchReferences,
             "variantsets": self._backend.runSearchVariantSets,
             "featuresets": self._backend.runSearchFeatureSets,
+            "continuoussets": self._backend.runSearchContinuousSets,
             "variants": self._backend.runSearchVariants,
             "features": self._backend.runSearchFeatures,
+            "continuous": self._backend.runSearchContinuous,
             "readgroupsets": self._backend.runSearchReadGroupSets,
             "reads": self._backend.runSearchReads,
             "variantannotations": self._backend.runSearchVariantAnnotations,
