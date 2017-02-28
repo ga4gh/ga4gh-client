@@ -40,6 +40,10 @@ class AbstractClient(object):
             self, protocol_request, path, protocol_response_class):
         raise NotImplemented()
 
+    def _run_http_get_request(
+            self, path, protocol_response_class):
+        raise NotImplemented()
+
     def _run_post_request(
             self, protocol_request, path, protocol_response_class):
         return self._run_http_post_request(
@@ -1025,3 +1029,28 @@ class LocalClient(AbstractClient):
             protocol.toJson(request))
         return self._deserialize_response(
             response_json, protocol.ListReferenceBasesResponse)
+
+    def _run_http_get_request(
+            self, path, protocol_response_class):
+        if path == "info":
+            response_json = self._backend.runGetInfo(
+                protocol.GetInfoRequest())
+            return self._deserialize_response(
+                response_json, protocol_response_class)
+        else:
+            raise NotImplemented()
+
+    def _run_http_post_request(
+            self, protocol_request, path, protocol_response_class):
+        if path == "announce":
+            response_json = self._backend.runAddAnnouncement(
+                protocol.toJson(protocol_request))
+            return self._deserialize_response(
+                response_json, protocol_response_class)
+        elif path == "peers/list":
+            response_json = self._backend.runListPeers(
+                protocol.toJson(protocol_request))
+            return self._deserialize_response(
+                response_json, protocol_response_class)
+        else:
+            raise NotImplemented()

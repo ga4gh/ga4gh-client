@@ -843,7 +843,7 @@ class SearchExpressionLevelsRunner(AbstractSearchRunner):
                 expression.score, expression.units, sep="\t", end="\t")
             print()
 
-class ListPeersRunner(AbstractQueryRunner):
+class ListPeersRunner(FormattedOutputRunner):
     """
     Runner class for the references/{id}/bases method
     """
@@ -853,29 +853,41 @@ class ListPeersRunner(AbstractQueryRunner):
 
     def run(self):
         iterator = self._client.list_peers()
-        self._textOutput(iterator)
+        self._output(iterator)
 
     def _textOutput(self, peers):
         for peer in peers:
             print(peer.url)
 
-class AnnouncePeerRunner(AbstractQueryRunner):
+class AnnouncePeerRunner(FormattedOutputRunner):
     def __init__(self, args):
         super(AnnouncePeerRunner, self).__init__(args)
         self._url = args.url
 
     def run(self):
         response = self._client.announce(self._url)
+        self._output(response)
+
+    def _textOutput(self, response):
         print("Server responded with {}".format(response.success))
 
+    def _jsonOutput(self, response):
+        print(protocol.toJson(response))
 
-class GetInfoRunner(AbstractQueryRunner):
+
+class GetInfoRunner(FormattedOutputRunner):
     def __init__(self, args):
         super(GetInfoRunner, self).__init__(args)
 
     def run(self):
         response = self._client.get_info()
+        self._output(response)
+
+    def _textOutput(self, response):
         print("Protocol version: {}".format(response.protocol_version))
+
+    def _jsonOutput(self, response):
+        print(protocol.toJson(response))
 
 # ListReferenceBases is an oddball, and doesn't fit either get or
 # search patterns.
@@ -1058,14 +1070,6 @@ class GetRnaQuantificationSetRunner(AbstractGetRunner):
     def __init__(self, args):
         super(GetRnaQuantificationSetRunner, self).__init__(args)
         self._method = self._client.get_rna_quantification_set
-
-class GetInfoRunner(AbstractGetRunner):
-    """
-    Runner class for the variantsets/{id} method
-    """
-    def __init__(self, args):
-        super(GetInfoRunner, self).__init__(args)
-        self._method = self._client.get_info
 
 
 def addVariantSearchOptions(parser):
@@ -1804,6 +1808,7 @@ def addListPeersParser(subparsers):
         "List the peers made available by a service")
     parser.set_defaults(runner=ListPeersRunner)
     addUrlArgument(parser)
+    addOutputFormatArgument(parser)
 
 def addGetInfoParser(subparsers):
     parser = cli.addSubparser(
@@ -1811,6 +1816,7 @@ def addGetInfoParser(subparsers):
         "Get info about a ervice")
     parser.set_defaults(runner=GetInfoRunner)
     addUrlArgument(parser)
+    addOutputFormatArgument(parser)
 
 def addAnnouncePeerParser(subparsers):
     parser = cli.addSubparser(
@@ -1819,14 +1825,15 @@ def addAnnouncePeerParser(subparsers):
     parser.set_defaults(runner=AnnouncePeerRunner)
     addUrlArgument(parser)
     addPeerUrlArgument(parser)
+    addOutputFormatArgument(parser)
 
 def getClientParser():
     parser = cli.createArgumentParser("GA4GH reference client")
     addClientGlobalOptions(parser)
     subparsers = parser.add_subparsers(title='subcommands',)
     addHelpParser(subparsers)
-    addAnnouncePeerParser(subparsers)
     addGetInfoParser(subparsers)
+    addListPeersParser(subparsers)
     addAnnouncePeerParser(subparsers)
     addVariantsSearchParser(subparsers)
     addVariantSetsSearchParser(subparsers)
