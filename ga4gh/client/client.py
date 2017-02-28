@@ -36,6 +36,33 @@ class AbstractClient(object):
             raise exceptions.EmptyResponseException()
         return protocol.fromJson(json_response_string, protocol_response_class)
 
+    def _run_http_post_request(
+            self, protocol_request, path, protocol_response_class):
+        raise NotImplemented()
+
+    def _run_post_request(
+            self, protocol_request, path, protocol_response_class):
+        return self._run_http_post_request(
+            protocol_request, path, protocol_response_class)
+
+    def _run_get_request_path(
+            self, path, protocol_response_class):
+        return self._run_http_get_request(path, protocol_response_class)
+
+    def _run_list_request(
+            self, protocol_request, path, protocol_response_class):
+        not_done = True
+        while not_done:
+            response_object = self._run_http_post_request(
+                protocol_request, path, protocol_response_class)
+            value_list = getattr(
+                response_object,
+                protocol.getValueListName(protocol_response_class))
+            for extract in value_list:
+                yield extract
+            not_done = bool(response_object.next_page_token)
+            protocol_request.page_token = response_object.next_page_token
+
     def _run_search_page_request(
             self, protocol_request, object_name, protocol_response_class):
         """
@@ -147,6 +174,22 @@ class AbstractClient(object):
         :rtype: int
         """
         return self._protocol_bytes_received
+
+    def get_info(self):
+        return self._run_get_request_path(
+            "info", protocol.GetInfoResponse)
+
+    def list_peers(self):
+        return self._run_list_request(
+            protocol.ListPeersRequest(),
+            "peers/list",
+            protocol.ListPeersResponse)
+
+    def announce(self, url):
+        request = protocol.AnnouncePeerRequest()
+        request.peer.url = url
+        return self._run_post_request(
+            request, "announce", protocol.AnnouncePeerResponse)
 
     def get_dataset(self, dataset_id):
         """
@@ -860,6 +903,25 @@ class HttpClient(AbstractClient):
         Returns the basic HTTP parameters we need all requests.
         """
         return {'key': self._authentication_key}
+
+    def _run_http_get_request(
+            self, path, protocol_response_class):
+        url = posixpath.join(self._url_prefix, path)
+        response = self._session.get(url, params=self._get_http_parameters())
+        self._check_response_status(response)
+        return self._deserialize_response(
+            response.text, protocol_response_class)
+
+    def _run_http_post_request(
+            self, protocol_request, path, protocol_response_class):
+        url = posixpath.join(self._url_prefix, path)
+        data = protocol.toJson(protocol_request)
+        self._logger.debug("request:{}".format(data))
+        response = self._session.post(
+            url, params=self._get_http_parameters(), data=data)
+        self._check_response_status(response)
+        return self._deserialize_response(
+            response.text, protocol_response_class)
 
     def _run_search_page_request(
             self, protocol_request, object_name, protocol_response_class):

@@ -23,6 +23,9 @@ class TestSearchMethodsCallRunRequest(unittest.TestCase):
         self.httpClient = client.HttpClient("http://example.com")
         self.httpClient._run_search_request = mock.Mock()
         self.httpClient._run_get_request = mock.Mock()
+        self.httpClient._run_list_request = mock.Mock()
+        self.httpClient._run_get_request_path = mock.Mock()
+        self.httpClient._run_post_request = mock.Mock()
         self.objectId = "SomeId"
         self.objectName = "objectName"
         self.datasetId = "datasetId"
@@ -420,3 +423,24 @@ class TestSearchMethodsCallRunRequest(unittest.TestCase):
         self.httpClient._run_search_request.assert_called_once_with(
             request, "phenotypeassociationsets",
             protocol.SearchPhenotypeAssociationSetsResponse)
+
+    def testListPeers(self):
+        request = protocol.ListPeersRequest()
+        self.httpClient.list_peers()
+        self.httpClient._run_list_request.assert_called_once_with(
+            request,
+            "peers/list",
+            protocol.ListPeersResponse)
+
+    def testGetInfo(self):
+        self.httpClient.get_info()
+        self.httpClient._run_get_request_path.assert_called_once_with(
+            "info", protocol.GetInfoResponse)
+
+    def testAnnounce(self):
+        url = "http://1kgenomes.ga4gh.org"
+        self.httpClient.announce(url)
+        request = protocol.AnnouncePeerRequest()
+        request.peer.url = url
+        self.httpClient._run_post_request.assert_called_once_with(
+            request, "announce", protocol.AnnouncePeerResponse)
