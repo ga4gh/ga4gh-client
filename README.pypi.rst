@@ -32,8 +32,14 @@ This installs both the client command line utility and the GA4GH client programm
 ::
 
   >>> from ga4gh.client import client
-  c = client.HttpClient("http://1kgenomes.ga4gh.org")
-  datasets = list(c.search_datasets())
+  >>> c = client.HttpClient("http://1kgenomes.ga4gh.org")
+  >>> datasets = list(c.search_datasets())
+  >>> print datasets
+  [id: "WyIxa2dlbm9tZXMiXQ"
+  name: "1kgenomes"
+  description: "Variants from the 1000 Genomes project and GENCODE genes annotations"
+  ]
+  >>>
 
 ==========
 REFERENCES
