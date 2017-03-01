@@ -1,8 +1,12 @@
+.. image:: http://genomicsandhealth.org/files/logo_ga.png
+
 ============
 GA4GH Client
 ============
 
-This is a client library for using the Global Alliance for Genomics and Health (GA4GH) API. This library provides an easy Python programming interface to access GA4GH compliant servers such as 1kgenome.ga4gh.org.
+This is a client library for using the Global Alliance for Genomics and Health (GA4GH) API. This library provides an easy Python programming interface to access GA4GH compliant servers such as the 1kgenomes.ga4gh.org_ server.
+
+.. _1kgenomes: http://www.1kgenomes.ga4gh.org
 
 **Installation**
 
@@ -32,10 +36,15 @@ This installs both the client command line utility and the GA4GH client programm
   >>> client.HttpClient
   <class 'ga4gh_client.client.HttpClient'>
 
-For more examples of using the GA4GH client visit this iPython_ notebook.
+==========
+REFERENCES
+==========
 
-.. _iPython: https://github.com/BD2KGenomics/bioapi-examples/blob/master/python_notebooks/1kg.ipynb
-
-For more information about GA4GH see the GA4GH_ website.
-
-.. _GA4GH: http://www.genomicsandhealth.org
+- For more examples of using the GA4GH client visit this `iPython <https://github.com/BD2KGenomics/bioapi-examples/blob/master/python_notebooks/1kg.ipynb>`_ notebook.
+- For more information about GA4GH see the `GA4GH <http://www.genomicsandhealth.org>`_ website.
+- Full documentation is available at `read-the-docs.org <http://ga4gh-reference-implementation.readthedocs.org/en/stable>`_.
+- For a quick start with the GA4GH API, please see our `demo <http://ga4gh-reference-implementation.readthedocs.org/en/stable/demo.html>`_.
+- To configure and deploy the GA4GH server in production please see the
+  `installation <http://ga4gh-reference-implementation.readthedocs.org/en/stable/installation.html>`_ page.
+- If you would like to contribute to the project, please see the
+  `development <http://ga4gh-reference-implementation.readthedocs.org/en/stable/development.html>`_ page.
