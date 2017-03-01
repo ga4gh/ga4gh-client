@@ -4,9 +4,8 @@
 GA4GH Client
 ============
 
-This is a client library for using the Global Alliance for Genomics and Health (GA4GH) API. This library provides an easy Python programming interface to access GA4GH compliant servers such as the 1kgenomes.ga4gh.org_ server.
+This is a client library for using the Global Alliance for Genomics and Health (GA4GH) API. This library provides an easy Python programming interface to access GA4GH compliant servers such as the `1kgenomes.ga4gh.org server <http://1kgenomes.ga4gh.org>`_.
 
-.. _1kgenomes: http://1kgenomes.ga4gh.org
 
 **Installation**
 
@@ -33,8 +32,8 @@ This installs both the client command line utility and the GA4GH client programm
 ::
 
   >>> from ga4gh.client import client
-  >>> client.HttpClient
-  <class 'ga4gh_client.client.HttpClient'>
+  c = client.HttpClient("http://1kgenomes.ga4gh.org")
+  datasets = list(c.search_datasets())
 
 ==========
 REFERENCES
