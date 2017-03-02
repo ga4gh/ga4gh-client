@@ -4,6 +4,22 @@
 Release Notes
 +++++++++++++
 
+********
+0.6.0a10
+********
+
+Features:
+
+* Remove feature_id from ExpressionLevel (#67)
+* Added support for BigWig files in a new Continuous Data object (#63)
+* Add ability to list and join peer server networks (#60)
+* Replaced info fields with rich type Attributes fields (#46)
+* Changed ontology term “id” to “term_id” (#48)
+
+Documentation:
+
+* Created a basic Info page for the Pypi repository (#68)
+
 *************
 0.6.0a9.post2
 *************
