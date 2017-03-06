@@ -842,6 +842,7 @@ class SearchExpressionLevelsRunner(AbstractSearchRunner):
                 expression.score, expression.units, sep="\t", end="\t")
             print()
 
+
 class ListPeersRunner(FormattedOutputRunner):
     """
     Runner class for the references/{id}/bases method
@@ -857,6 +858,7 @@ class ListPeersRunner(FormattedOutputRunner):
     def _textOutput(self, peers):
         for peer in peers:
             print(peer.url)
+
 
 class AnnouncePeerRunner(FormattedOutputRunner):
     def __init__(self, args):
