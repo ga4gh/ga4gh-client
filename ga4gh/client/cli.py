@@ -890,7 +890,7 @@ class GetInfoRunner(FormattedOutputRunner):
     def _jsonOutput(self, response):
         print(protocol.toJson(response))
 
-        
+
 # ListReferenceBases is an oddball, and doesn't fit either get or
 # search patterns.
 class ListReferenceBasesRunner(AbstractQueryRunner):
