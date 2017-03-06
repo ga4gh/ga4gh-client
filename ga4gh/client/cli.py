@@ -823,16 +823,15 @@ class SearchExpressionLevelsRunner(AbstractSearchRunner):
     def __init__(self, args):
         super(SearchExpressionLevelsRunner, self).__init__(args)
         self._rnaQuantificationId = args.rnaQuantificationId
-        self._feature_ids = []
-        if len(args.featureIds) > 0:
-            self._feature_ids = args.featureIds.split(",")
+        self._names = []
+        if len(args.names) > 0:
+            self._names = args.names.split(",")
         self.threshold = args.threshold
 
     def run(self):
         iterator = self._client.search_expression_levels(
             rna_quantification_id=self._rnaQuantificationId,
-            feature_ids=self._feature_ids,
-            threshold=self.threshold)
+            names=self._names, threshold=self.threshold)
         self._output(iterator)
 
     def _textOutput(self, expressionObjs):
@@ -1227,11 +1226,11 @@ def addCallSetIdsArgument(parser):
             """)
 
 
-def addFeatureIdsArgument(parser):
+def addNamesArgument(parser):
     parser.add_argument(
-        "--featureIds", "-f", default=[],
-        help="""Return annotations on any of the feature IDs.
-            Pass in IDs as a comma separated list (no spaces).
+        "--names", "-n", default=[],
+        help="""Return matches on any of the listed names.
+            Pass in names as a comma separated list (no spaces).
             """)
 
 
@@ -1757,7 +1756,7 @@ def addExpressionLevelsSearchParser(subparsers):
     parser.set_defaults(runner=SearchExpressionLevelsRunner)
     addUrlArgument(parser)
     addPageSizeArgument(parser)
-    addFeatureIdsArgument(parser)
+    addNamesArgument(parser)
     parser.add_argument(
         "--rnaQuantificationId", default='',
         help="The RNA Quantification Id to search over")
