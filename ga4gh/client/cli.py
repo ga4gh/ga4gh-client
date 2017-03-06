@@ -890,6 +890,7 @@ class GetInfoRunner(FormattedOutputRunner):
     def _jsonOutput(self, response):
         print(protocol.toJson(response))
 
+        
 # ListReferenceBases is an oddball, and doesn't fit either get or
 # search patterns.
 class ListReferenceBasesRunner(AbstractQueryRunner):
@@ -1811,6 +1812,7 @@ def addListPeersParser(subparsers):
     addUrlArgument(parser)
     addOutputFormatArgument(parser)
 
+
 def addGetInfoParser(subparsers):
     parser = cli.addSubparser(
         subparsers, "get-info",
@@ -1818,6 +1820,7 @@ def addGetInfoParser(subparsers):
     parser.set_defaults(runner=GetInfoRunner)
     addUrlArgument(parser)
     addOutputFormatArgument(parser)
+
 
 def addAnnouncePeerParser(subparsers):
     parser = cli.addSubparser(
@@ -1827,6 +1830,7 @@ def addAnnouncePeerParser(subparsers):
     addUrlArgument(parser)
     addPeerUrlArgument(parser)
     addOutputFormatArgument(parser)
+
 
 def getClientParser():
     parser = cli.createArgumentParser("GA4GH reference client")
