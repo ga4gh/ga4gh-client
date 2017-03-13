@@ -47,9 +47,9 @@ REFERENCES
 
 - For more examples of using the GA4GH client visit this `iPython <https://github.com/BD2KGenomics/bioapi-examples/blob/master/python_notebooks/1kg.ipynb>`_ notebook.
 - For more information about GA4GH see the `GA4GH <http://www.genomicsandhealth.org>`_ website.
-- Full documentation is available at `read-the-docs.org <http://ga4gh-reference-implementation.readthedocs.org/en/stable>`_.
-- For a quick start with the GA4GH API, please see our `demo <http://ga4gh-reference-implementation.readthedocs.org/en/stable/demo.html>`_.
+- Full documentation is available at `read-the-docs.org <http://ga4gh-server.readthedocs.org/en/stable>`_.
+- For a quick start with the GA4GH API, please see our `demo <http://ga4gh-server.readthedocs.org/en/stable/demo.html>`_.
 - To configure and deploy the GA4GH server in production please see the
-  `installation <http://ga4gh-reference-implementation.readthedocs.org/en/stable/installation.html>`_ page.
+  `installation <http://ga4gh-server.readthedocs.org/en/stable/installation.html>`_ page.
 - If you would like to contribute to the project, please see the
-  `development <http://ga4gh-reference-implementation.readthedocs.org/en/stable/development.html>`_ page.
+  `development <http://ga4gh-server.readthedocs.org/en/stable/development.html>`_ page.

@@ -11,7 +11,7 @@ GA4GH Client Implementation
 
 `ga4gh-client <https://pypi.python.org/pypi/ga4gh-client>`_ is a package that contains the client functionality of the `ga4gh <https://pypi.python.org/pypi/ga4gh>`_ package.
 
-See the documentation for the ``ga4gh`` package on its `readthedocs page <https://readthedocs.org/projects/ga4gh-reference-implementation/>`_.
+See the documentation for the ``ga4gh`` package on its `readthedocs page <https://readthedocs.org/projects/ga4gh-server/>`_.
 
 Contents:
 
