@@ -11,6 +11,7 @@ Release Notes
 Features:
 
 - Added **support for BigWig files** in a new Continuous Data object (#63)  New endpoints and message types include:
+
  - `POST /continuoussets/search`
  - `GET /continuoussets/{id}`
  - `POST /continuous/search`
@@ -18,6 +19,7 @@ Features:
  - ContinuousSet (new)
  
 - Add **ability to list and join peer server networks** (#60)  New endpoints and message types include:
+
  - `POST /peers/list`
  - `POST /peers/announce`
  - `GET /info`
@@ -27,10 +29,12 @@ Features:
  - GetInfoResponse (new)
 
 - Remove feature_id from ExpressionLevel and add ability to search by the Name field (#67)  Impacts
- - 'POST /expressionlevels/search'
+
+ - `POST /expressionlevels/search`
  - `GET /expressionlevels/{id}`
 
 - Replaced info fields with rich type Attributes fields (#46)  Impacts the following message types:
+
  - TranscriptEffect
  - VariantAnnotation
  - Individual
@@ -53,10 +57,12 @@ Features:
  - Variant
 
 - Replace NCBI taxon ID integer with ontology term.  Impacts the following message types:
+
  - Reference
  - ReferenceSet
 
 - Changed ontology term “id” to “term_id” (#48)  Impacts the following message types:
+
  - OntologyTerm
 
 Documentation:
